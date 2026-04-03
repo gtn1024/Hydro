@@ -12,6 +12,17 @@ after each iteration and it's included in prompts for context.
 - Revision-based status methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control on status records
 
 ---
+## 2026-04-03 - US-023
+- Documented BuiltinModel: all exports from `@hydrooj/common` (PERM 55+ flags, PRIV 22+ flags, STATUS 18 enum values + 4 lookup maps, gender constants, utility function) plus Hydro-extended exports (Permission factory, PERMS array, PERMS_BY_FAMILY, LEVELS, BUILTIN_ROLES, DEFAULT_NODES, CATEGORIES)
+- Files changed: `docs/models/builtin-model.md` (created)
+- **Learnings:**
+  - BuiltinModel is a pure re-export + extension module — it re-exports `@hydrooj/common/permission` and `@hydrooj/common/status` wholesale, then adds Hydro-specific constants (PERMS array, LEVELS, BUILTIN_ROLES, DEFAULT_NODES, CATEGORIES)
+  - `PERM` flags use `bigint` (domain-scoped); `PRIV` flags use `number` (system-scoped) — different numeric types for different scopes
+  - `PERM_VIEW_DISPLAYNAME` is deprecated alias for `PERM_VIEW_USER_PRIVATE_INFO` (same bit `1n << 67`)
+  - `PERMS` is an array of `{family, key, desc}` descriptors used for UI rendering; `PERMS_BY_FAMILY` is auto-generated from it
+  - Source lives in `packages/common/` (not `packages/hydrooj/src/`), with `packages/hydrooj/src/model/builtin.ts` re-exporting and extending
+
+---
 
 ## 2026-04-03 - US-022
 - Documented DocumentModel: 28 functions across 6 categories — DocType Constants (10), Collections (2), Document CRUD (9), Sub-document Operations (6), Status CRUD (11), Revision-based Status (3), plus Lifecycle (1) and 2 type interfaces
