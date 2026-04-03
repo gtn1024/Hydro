@@ -12,6 +12,18 @@ after each iteration and it's included in prompts for context.
 - Revision-based status methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control on status records
 
 ---
+
+## 2026-04-03 - US-024
+- Documented ContestModel: 47 exported members across 10 categories — Constants & Types (3), State Predicates (8), CRUD (7), Status (10), Scoreboard Visibility (5), Balloon (4), Clarification (4), Print Task (4), Other (2), plus lifecycle (1)
+- Files changed: `docs/models/contest-model.md` (created)
+- **Learnings:**
+  - ContestModel is the most complex model documented so far — it contains 6 built-in scoring rules (acm, oi, homework, ioi, ledo, strictioi) each with full scoreboard rendering logic
+  - The `buildContestRule` factory creates rules by inheriting from a base rule and binding functions — `ioi` inherits from `oi`, `strictioi` inherits from `ioi`, `ledo` inherits from `oi`
+  - Contest uses multiple docTypes: `TYPE_CONTEST` (30) for contests, `TYPE_CONTEST_CLARIFICATION` for Q&A, `TYPE_CONTEST_PRINT` for print tasks — all sharing the parent/child document pattern
+  - `updateStatus` is the central scoring entry point — it pushes a journal entry via `revPushStatus`, then recalculates stats via the rule's `stat` function and saves via `revSetStatus`
+  - Visibility functions (`canShowRecord`, `canShowSelfRecord`, `canShowScoreboard`) use `this` context binding (called with `.call(this, ...)`) to access the request handler's user object
+---
+
 ## 2026-04-03 - US-023
 - Documented BuiltinModel: all exports from `@hydrooj/common` (PERM 55+ flags, PRIV 22+ flags, STATUS 18 enum values + 4 lookup maps, gender constants, utility function) plus Hydro-extended exports (Permission factory, PERMS array, PERMS_BY_FAMILY, LEVELS, BUILTIN_ROLES, DEFAULT_NODES, CATEGORIES)
 - Files changed: `docs/models/builtin-model.md` (created)
