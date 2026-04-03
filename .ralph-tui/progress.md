@@ -15,7 +15,19 @@ after each iteration and it's included in prompts for context.
 - Revision-based status methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control on status records
 - SettingService registration methods (`PreferenceSetting`, `AccountSetting`, etc.) wrap SettingModel functions via a higher-order `T()` helper that auto-disposes on context teardown — plugins use `ctx.setting.X()` instead of the bare `SettingModel.X()`
 - `Sock` wraps `ReconnectingWebSocket` with built-in heartbeat (30s ping interval), Shorty compression support (activated by server sending `"shorty"` message), and auto-close on permission errors — the `on()` method is a thin setter that maps event names to `on{event}` properties
+- `uploadFiles` uploads files sequentially (not in parallel) with a two-bar progress dialog — uses closure-captured variables for React re-rendering via `setRender` trick, and blocks browser close via `beforeunload` during upload
 
+---
+
+## 2026-04-03 - US-039
+- Documented uploadFiles: 1 async function + UploadOptions interface (5 optional fields)
+- Files changed: `docs/ui/upload-files.md` (created)
+- **Learnings:**
+  - `uploadFiles` uploads files sequentially (not in parallel) — iterates with `for...in` over FileList
+  - Progress dialog uses closure-captured variables (`uploadLabel`, `fileLabel`, `uploadProgress`, `fileProgress`) with a `render` function set via React `useState` — re-renders on XHR progress events
+  - Browser close is blocked during upload via `beforeunload` event listener, removed in both success and error paths
+  - FormData always includes `operation: 'upload_file'`; `type` and custom filename are optional
+  - After completion, dialog stays open for 500ms (`delay(500)`) before closing — UX grace period
 ---
 
 ## 2026-04-03 - US-038

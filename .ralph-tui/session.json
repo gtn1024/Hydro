@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:28:45.502Z",
-  "currentIteration": 22,
+  "updatedAt": "2026-04-03T05:30:43.387Z",
+  "currentIteration": 23,
   "maxIterations": 0,
-  "tasksCompleted": 21,
+  "tasksCompleted": 22,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -239,8 +239,8 @@
       {
         "id": "US-038",
         "title": "Socket",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-039",
@@ -524,6 +524,16 @@
       "durationMs": 129432,
       "startedAt": "2026-04-03T05:24:46.873Z",
       "endedAt": "2026-04-03T05:26:56.305Z"
+    },
+    {
+      "iteration": 23,
+      "status": "completed",
+      "taskId": "US-038",
+      "taskTitle": "Socket",
+      "taskCompleted": true,
+      "durationMs": 108105,
+      "startedAt": "2026-04-03T05:26:57.396Z",
+      "endedAt": "2026-04-03T05:28:45.501Z"
     }
   ],
   "skippedTaskIds": [],
