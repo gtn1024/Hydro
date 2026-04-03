@@ -9,6 +9,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-017
+- Documented TrainingModel: 17 exported functions across CRUD (7), Enrollment & Status (5), DAG Helpers (5)
+- Files changed: `docs/models/training-model.md` (created)
+- **Learnings:**
+  - TrainingModel is a plain module with exported functions, not a class — unlike TaskModel which is a static class
+  - All CRUD/status operations delegate to the shared `document` module with `TYPE_TRAINING = 40`
+  - DAG helpers accept both `Set<number>` and `number[]` — they coerce internally
+  - `get()` normalizes DAG `pids` strings to integers for backwards compat
+
+---
+
 ## 2026-04-03 - US-016
 - Documented TaskModel: 8 static methods + Consumer class with 4 methods
 - Files changed: `docs/models/task-model.md` (created)

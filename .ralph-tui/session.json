@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T04:33:49.309Z",
-  "currentIteration": 0,
+  "updatedAt": "2026-04-03T04:35:34.768Z",
+  "currentIteration": 1,
   "maxIterations": 0,
-  "tasksCompleted": 0,
+  "tasksCompleted": 1,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -107,8 +107,8 @@
       {
         "id": "US-016",
         "title": "TaskModel",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-017",
@@ -304,7 +304,18 @@
       }
     ]
   },
-  "iterations": [],
+  "iterations": [
+    {
+      "iteration": 1,
+      "status": "completed",
+      "taskId": "US-016",
+      "taskTitle": "TaskModel",
+      "taskCompleted": true,
+      "durationMs": 195518,
+      "startedAt": "2026-04-03T04:30:33.790Z",
+      "endedAt": "2026-04-03T04:33:49.308Z"
+    }
+  ],
   "skippedTaskIds": [],
   "cwd": "/Users/getn/repos/github/HydroApis",
   "activeTaskIds": [],
