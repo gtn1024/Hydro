@@ -162,3 +162,14 @@ after each iteration and it's included in prompts for context.
   - `send` auto-increments `unreadMsg` on recipients when `FLAG_UNREAD` is set
   - 3 methods decorated with `@ArgMethod`: `send`, `getByUser`, `count`
 ---
+
+## 2026-04-03 - US-013
+- Documented OauthModel: 5 public methods across 3 categories (lookup, account linking, provider registration), 2 properties, 3 type exports, and 2 indexes
+- Created `docs/models/oauth-model.md`
+- **Learnings:**
+  - `OauthModel` extends `Service` (not static-only) — accessed via `ctx.oauth`, like `SystemModel` which uses `serviceInstance`
+  - Uses single MongoDB collection `oauth` with unique compound index on `{platform, id}`
+  - `provide()` uses `ctx.effect()` for automatic cleanup — providers are removed when context is disposed, making it safe for plugin lifecycle
+  - `set()` uses `findOneAndUpdate` with upsert — idempotent account linking
+  - No bus events emitted — this model is purely CRUD for account mappings
+---
