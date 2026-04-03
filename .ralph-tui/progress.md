@@ -8,11 +8,24 @@ after each iteration and it's included in prompts for context.
 *Add reusable patterns discovered during development here.*
 
 - Frontend plugin system (`packages/ui-default/context.ts`) is a thin Cordis wrapper — `Context`, `Service` extend cordis base classes with no additional methods; `Disposable`, `FiberState`, `Plugin` are pure re-exports; `EventMap` is an empty interface designed for declaration merging by plugins
+- Dialog subclasses (InfoDialog, ActionDialog, ConfirmDialog) are thin preconfigurations of the base `Dialog` class — they only set default `$action` buttons and `cancelByClickingBack`/`cancelByEsc` flags in the constructor, no method overrides
+- `prompt()` is the most complex dialog function — it uses React state for form field management, caches values via closure (`valueCache`), and renders different widgets (text input, select, UserSelectAutoComplete, DomainSelectAutoComplete, checkbox) based on `Field.type`
 - DocumentModel is the foundational data-access layer that higher-level models (Problem, Contest, Training, Discussion) delegate to — each specifies a `docType` constant and calls DocumentModel functions
 - DocumentModel has two collections: `coll` (document) for records and `collStatus` (document.status) for per-user state, both sharing the same `(domainId, docType, docId)` composite key
 - Revision-based status methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control on status records
 - SettingService registration methods (`PreferenceSetting`, `AccountSetting`, etc.) wrap SettingModel functions via a higher-order `T()` helper that auto-disposes on context teardown — plugins use `ctx.setting.X()` instead of the bare `SettingModel.X()`
 
+---
+
+## 2026-04-03 - US-036
+- Documented Dialog system: 4 classes (Dialog, InfoDialog, ActionDialog, ConfirmDialog), 3 functions (prompt, confirm, alert), 2 interfaces (Field, DialogOptions)
+- Files changed: `docs/ui/dialog.md` (created)
+- **Learnings:**
+  - Dialog subclasses are thin preconfigurations — they only set default `$action` buttons and cancel flags, no method overrides (except ActionDialog adds `clear()`)
+  - `prompt()` is the most complex function — uses React state + closure-cached `valueCache` for form management, renders different widgets based on `Field.type`
+  - `DomDialog.show()` returns a `Promise<string>` resolved by `dispatchAction()` — the action name (e.g. "ok", "cancel", "yes", "no") is the dialog result
+  - `onDispatch` returning `false` blocks dialog closure — used by `prompt()` for required field validation
+  - `Field.columns` with negative value triggers a row break in the grid layout
 ---
 
 ## 2026-04-03 - US-035

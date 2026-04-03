@@ -646,11 +646,12 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/ui-default/components/dialog/index.tsx",
       "dependsOn": [
         "US-033"
-      ]
+      ],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-037",
@@ -860,6 +861,6 @@
     }
   ],
   "metadata": {
-    "updatedAt": "2026-04-03T05:22:45.255Z"
+    "updatedAt": "2026-04-03T05:24:45.777Z"
   }
 }
