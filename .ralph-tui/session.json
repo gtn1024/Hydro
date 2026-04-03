@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:15:19.358Z",
-  "currentIteration": 16,
+  "updatedAt": "2026-04-03T05:18:19.091Z",
+  "currentIteration": 17,
   "maxIterations": 0,
-  "tasksCompleted": 15,
+  "tasksCompleted": 16,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -203,8 +203,8 @@
       {
         "id": "US-032",
         "title": "工具库",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-033",
@@ -464,6 +464,16 @@
       "durationMs": 148235,
       "startedAt": "2026-04-03T05:09:09.076Z",
       "endedAt": "2026-04-03T05:11:37.311Z"
+    },
+    {
+      "iteration": 17,
+      "status": "completed",
+      "taskId": "US-032",
+      "taskTitle": "工具库",
+      "taskCompleted": true,
+      "durationMs": 220945,
+      "startedAt": "2026-04-03T05:11:38.412Z",
+      "endedAt": "2026-04-03T05:15:19.357Z"
     }
   ],
   "skippedTaskIds": [],

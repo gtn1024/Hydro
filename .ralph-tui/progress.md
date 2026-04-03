@@ -7,11 +7,22 @@ after each iteration and it's included in prompts for context.
 
 *Add reusable patterns discovered during development here.*
 
+- Frontend plugin system (`packages/ui-default/context.ts`) is a thin Cordis wrapper — `Context`, `Service` extend cordis base classes with no additional methods; `Disposable`, `FiberState`, `Plugin` are pure re-exports; `EventMap` is an empty interface designed for declaration merging by plugins
 - DocumentModel is the foundational data-access layer that higher-level models (Problem, Contest, Training, Discussion) delegate to — each specifies a `docType` constant and calls DocumentModel functions
 - DocumentModel has two collections: `coll` (document) for records and `collStatus` (document.status) for per-user state, both sharing the same `(domainId, docType, docId)` composite key
 - Revision-based status methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control on status records
 - SettingService registration methods (`PreferenceSetting`, `AccountSetting`, etc.) wrap SettingModel functions via a higher-order `T()` helper that auto-disposes on context teardown — plugins use `ctx.setting.X()` instead of the bare `SettingModel.X()`
 
+---
+
+## 2026-04-03 - US-033
+- Documented frontend plugin system core: Context, ctx, Service, EventMap, Events, Fiber, Disposable, FiberState, Plugin
+- Files changed: `docs/ui/context.md` (created)
+- **Learnings:**
+  - Frontend `context.ts` is a thin Cordis wrapper — `Context` and `Service` extend base classes with no additional methods; `Disposable`, `FiberState`, `Plugin` are pure re-exports from cordis
+  - `EventMap` is declared as an empty interface in `api.ts` (not `context.ts`), designed for TypeScript declaration merging by plugins
+  - `Context` has a `broadcast` property aliased to `emit`, and an `Events` interface property via `Context[Context.events]`
+  - `ctx` is the global singleton — `new Context()` at module load time, separate from the backend `Context`
 ---
 
 ## 2026-04-03 - US-032

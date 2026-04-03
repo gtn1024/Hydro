@@ -591,9 +591,10 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/ui-default/context.ts",
-      "dependsOn": []
+      "dependsOn": [],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-034",
@@ -857,6 +858,6 @@
     }
   ],
   "metadata": {
-    "updatedAt": "2026-04-03T05:15:19.358Z"
+    "updatedAt": "2026-04-03T05:18:19.090Z"
   }
 }
