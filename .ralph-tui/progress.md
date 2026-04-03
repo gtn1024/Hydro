@@ -19,6 +19,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-044
+- Documented tpl(), tpl.typoMsg(), rawHtml(), substitute(), i18n()
+- Files changed: `docs/ui/utils/template.md` (created)
+- **Learnings:**
+  - `tpl()` is polymorphic with two overloads: tag template literal (returns HTML string) and React node renderer (returns string or DOM div depending on `reactive` flag)
+  - `tpl.typoMsg()` is a static property attached to the `tpl` function — not a separate export, but part of the `tpl` object
+  - `rawHtml()` returns a discriminated object `{ templateRaw: true, html }` that `tpl()` checks for to skip escaping — a lightweight alternative to `dangerouslySetInnerHTML`
+  - `i18n()` chains `substitute()` for parameter interpolation — looks up `window.LOCALES[str]` first, falls back to raw string key
+
+---
+
 ## 2026-04-03 - US-043
 - Documented api(), request object (ajax, post, get, postFile), getAvailableLangs()
 - Files changed: `docs/ui/utils/request.md` (created)
