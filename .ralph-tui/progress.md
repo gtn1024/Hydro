@@ -10,6 +10,9 @@ after each iteration and it's included in prompts for context.
 - **Workspace layout**: The `@hydrooj/framework` package lives at `framework/framework/` (not `packages/`), configured via `pnpm.workspaces` including `framework/*`.
 - **Framework source structure**: `framework/framework/` contains `index.ts` (re-exports), `api.ts` (Query/Mutation/Subscription/APIS), `server.ts` (HandlerCommon/Handler/ConnectionHandler/WebService/httpServer), `router.ts` (Router with WS support).
 
+- **Param decorator pattern**: `@param/@query/@post/@route/@get` decorators bind handler method params to request sources. Each accepts `(name, Type, ...options)` where `Type` is a Schemastery schema or `[convert, validate?, optional?]` tuple.
+- **Types are tuples**: `Types.*` values are `[Converter, Validator?, isOptional?]` tuples (not classes), making them composable via `Types.ArrayOf`, `Types.AnyOf`, `Types.Range`.
+
 ---
 
 ## 2026-04-03 - US-001
@@ -21,5 +24,15 @@ after each iteration and it's included in prompts for context.
   - `APIS` is a mutable runtime dictionary; `Apis` is the TypeScript interface describing its shape
   - `HandlerCommon` is the base class for both `Handler` (HTTP) and `ConnectionHandler` (WebSocket)
   - `WebService` is the cordis Service that exposes `ctx.Route()` and `ctx.Connection()`
+---
+## 2026-04-03 - US-002
+- Documented 6 parameter decorators (`param`, `query`, `get`, `post`, `route`, `subscribe`) and 3 utility types (`Converter`, `Validator`, `Type`)
+- Documented all 28 `Types.*` validators in categorized tables (string, number, special, composite)
+- Created `docs/framework/decorators.md` with decorator usage example and full type reference
+- **Learnings:**
+  - `Types.*` are `[Converter, Validator?, isOptional?]` tuples, not classes — composable via `Types.ArrayOf`, `Types.AnyOf`, `Types.Range`
+  - PERM/PRIV are NOT part of `@hydrooj/framework` — they live in `packages/hydrooj/src/model/builtin.ts` (likely a separate US)
+  - `subscribe` is dual-purpose: works as both a method decorator and a class decorator for WebSocket handlers
+  - `Types.Boolean` is always optional (3rd tuple element is `true`); `Types.Name` is deprecated
 ---
 

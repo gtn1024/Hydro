@@ -31,9 +31,10 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/hydrooj/src/plugin-api.ts:54-55, @hydrooj/framework/decorators, @hydrooj/framework/validator",
-      "dependsOn": []
+      "dependsOn": [],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-003",
@@ -827,6 +828,6 @@
     }
   ],
   "metadata": {
-    "updatedAt": "2026-04-03T03:36:54.313Z"
+    "updatedAt": "2026-04-03T03:41:53.533Z"
   }
 }
