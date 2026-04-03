@@ -1,0 +1,759 @@
+{
+  "name": "Hydro 插件开发 API 文档",
+  "branchName": "ralph/hydro-plugin-api-docs",
+  "description": "为 hydrooj 后端包和 @hydrooj/ui-default 前端包的所有对外暴露接口编写完整的 API 参考文档。每个 US 对应一个 API 模块，逐一阅读源码并文档化。最终输出为 VitePress 文档站点的 Markdown 文件。",
+  "functionalRequirements": [
+    "FR-1: 每个 US 对应一个或少数几个源文件",
+    "FR-2: 每个 API 条目必须包含：名称和一句话描述",
+    "FR-3: API 按功能分类组织（目录结构即分类）",
+    "FR-4: 标注已废弃的 API",
+    "FR-5: 覆盖 plugin-api.ts 中 100% 的 export 语句",
+    "FR-6: 覆盖 ui-default/index.ts 中 100% 的 export 语句",
+    "FR-7: namespace export 的模型需展开所有公开方法名",
+    "FR-8: 每个 US 输出一个独立的 Markdown 文件到 docs/ 目录",
+    "FR-9: 目录结构作为分类依据，文件名使用 kebab-case"
+  ],
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "@hydrooj/framework 重新导出",
+      "description": "作为插件开发者，我想查阅从 @hydrooj/framework 重新导出的核心 Web 框架接口。",
+      "outputFile": "docs/framework/exports.md",
+      "acceptanceCriteria": [
+        "列出 Apis, APIS, HandlerCommon, httpServer, Mutation, Query, Router, Subscription, WebService",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/plugin-api.ts:8-11, @hydrooj/framework 包",
+      "dependsOn": []
+    },
+    {
+      "id": "US-002",
+      "title": "@hydrooj/framework 装饰器 & 验证器",
+      "description": "作为插件开发者，我想查阅可用的装饰器和验证器。",
+      "outputFile": "docs/framework/decorators.md",
+      "acceptanceCriteria": [
+        "列出所有装饰器导出",
+        "列出 param, Types, PERM, PRIV 等验证器导出",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/plugin-api.ts:54-55, @hydrooj/framework/decorators, @hydrooj/framework/validator",
+      "dependsOn": []
+    },
+    {
+      "id": "US-003",
+      "title": "Context & Service",
+      "description": "作为插件开发者，我想查阅插件系统核心类 Context 和 Service 的接口。",
+      "outputFile": "docs/context/index.md",
+      "acceptanceCriteria": [
+        "列出 Context 类的关键方法：Route, on, inject, broadcast, addScript, provideModule, injectUI, mixin, plugin, effect, setImmediate, emit, parallel",
+        "列出 Service 基类",
+        "列出 Fiber, FiberState, Disposable, Plugin 类型",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/context.ts",
+      "dependsOn": []
+    },
+    {
+      "id": "US-004",
+      "title": "SystemModel",
+      "description": "作为插件开发者，我想查阅系统设置模型 SystemModel 的所有公开方法。",
+      "outputFile": "docs/model/system-model.md",
+      "acceptanceCriteria": [
+        "展开列出 SystemModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/system.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-005",
+      "title": "UserModel",
+      "description": "作为插件开发者，我想查阅用户模型 UserModel 的所有公开方法。",
+      "outputFile": "docs/model/user-model.md",
+      "acceptanceCriteria": [
+        "展开列出 UserModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/user.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-006",
+      "title": "ProblemModel",
+      "description": "作为插件开发者，我想查阅题目模型 ProblemModel 的所有公开方法和附带类型导出。",
+      "outputFile": "docs/model/problem-model.md",
+      "acceptanceCriteria": [
+        "展开列出 ProblemModel 的所有公开方法名",
+        "列出 Field, ProblemDoc 等附带类型导出",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/problem.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-007",
+      "title": "RecordModel",
+      "description": "作为插件开发者，我想查阅评测记录模型 RecordModel 的所有公开方法。",
+      "outputFile": "docs/model/record-model.md",
+      "acceptanceCriteria": [
+        "展开列出 RecordModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/record.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-008",
+      "title": "DomainModel",
+      "description": "作为插件开发者，我想查阅域模型 DomainModel 的所有公开方法。",
+      "outputFile": "docs/model/domain-model.md",
+      "acceptanceCriteria": [
+        "展开列出 DomainModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/domain.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-009",
+      "title": "TokenModel",
+      "description": "作为插件开发者，我想查阅 Token 模型 TokenModel 的所有公开方法。",
+      "outputFile": "docs/model/token-model.md",
+      "acceptanceCriteria": [
+        "展开列出 TokenModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/token.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-010",
+      "title": "ScheduleModel",
+      "description": "作为插件开发者，我想查阅定时任务模型 ScheduleModel 的所有公开方法。",
+      "outputFile": "docs/model/schedule-model.md",
+      "acceptanceCriteria": [
+        "展开列出 ScheduleModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/schedule.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-011",
+      "title": "SolutionModel",
+      "description": "作为插件开发者，我想查阅题解模型 SolutionModel 的所有公开方法。",
+      "outputFile": "docs/model/solution-model.md",
+      "acceptanceCriteria": [
+        "展开列出 SolutionModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/solution.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-012",
+      "title": "MessageModel",
+      "description": "作为插件开发者，我想查阅消息模型 MessageModel 的所有公开方法。",
+      "outputFile": "docs/model/message-model.md",
+      "acceptanceCriteria": [
+        "展开列出 MessageModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/message.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-013",
+      "title": "OauthModel",
+      "description": "作为插件开发者，我想查阅 OAuth 模型 OauthModel 的所有公开方法。",
+      "outputFile": "docs/model/oauth-model.md",
+      "acceptanceCriteria": [
+        "展开列出 OauthModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/oauth.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-014",
+      "title": "BlackListModel",
+      "description": "作为插件开发者，我想查阅黑名单模型 BlackListModel 的所有公开方法。",
+      "outputFile": "docs/model/blacklist-model.md",
+      "acceptanceCriteria": [
+        "展开列出 BlackListModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/blacklist.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-015",
+      "title": "StorageModel",
+      "description": "作为插件开发者，我想查阅文件存储模型 StorageModel 的所有公开方法。",
+      "outputFile": "docs/model/storage-model.md",
+      "acceptanceCriteria": [
+        "展开列出 StorageModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/storage.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-016",
+      "title": "TaskModel",
+      "description": "作为插件开发者，我想查阅任务模型 TaskModel 的所有公开方法。",
+      "outputFile": "docs/model/task-model.md",
+      "acceptanceCriteria": [
+        "展开列出 TaskModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/task.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-017",
+      "title": "TrainingModel",
+      "description": "作为插件开发者，我想查阅训练模型 TrainingModel 的所有公开方法。",
+      "outputFile": "docs/model/training-model.md",
+      "acceptanceCriteria": [
+        "展开列出 TrainingModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/training.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-018",
+      "title": "OpcountModel",
+      "description": "作为插件开发者，我想查阅操作计数模型 OpcountModel 的所有公开方法。",
+      "outputFile": "docs/model/opcount-model.md",
+      "acceptanceCriteria": [
+        "展开列出 OpcountModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/opcount.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-019",
+      "title": "OplogModel",
+      "description": "作为插件开发者，我想查阅操作日志模型 OplogModel 的所有公开方法。",
+      "outputFile": "docs/model/oplog-model.md",
+      "acceptanceCriteria": [
+        "展开列出 OplogModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/oplog.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-020",
+      "title": "SettingModel",
+      "description": "作为插件开发者，我想查阅设置模型 SettingModel 的所有公开方法。",
+      "outputFile": "docs/model/setting-model.md",
+      "acceptanceCriteria": [
+        "展开列出 SettingModel 的所有导出：Setting(), PreferenceSetting, AccountSetting, DomainSetting, DomainUserSetting, SystemSetting 等",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/setting.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-021",
+      "title": "DiscussionModel",
+      "description": "作为插件开发者，我想查阅讨论模型 DiscussionModel 的所有公开方法。",
+      "outputFile": "docs/model/discussion-model.md",
+      "acceptanceCriteria": [
+        "展开列出 DiscussionModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/discussion.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-022",
+      "title": "DocumentModel & DocType",
+      "description": "作为插件开发者，我想查阅文档模型 DocumentModel 的所有公开方法及 DocType 枚举。",
+      "outputFile": "docs/model/document-model.md",
+      "acceptanceCriteria": [
+        "展开列出 DocumentModel 的所有公开方法名",
+        "列出 DocType 枚举值",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/document.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-023",
+      "title": "BuiltinModel",
+      "description": "作为插件开发者，我想查阅内建模型 BuiltinModel 的所有导出（PERMS, ROLES, PRIV 等常量和方法）。",
+      "outputFile": "docs/model/builtin-model.md",
+      "acceptanceCriteria": [
+        "展开列出 BuiltinModel 的所有公开方法名",
+        "列出 PERMS, ROLES, PRIV 等常量",
+        "每个导出一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/builtin.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-024",
+      "title": "ContestModel",
+      "description": "作为插件开发者，我想查阅比赛模型 ContestModel 的所有公开方法。",
+      "outputFile": "docs/model/contest-model.md",
+      "acceptanceCriteria": [
+        "展开列出 ContestModel 的所有公开方法名",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/model/contest.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-025",
+      "title": "EventMap (事件总线)",
+      "description": "作为插件开发者，我想查阅所有可监听的事件及其参数签名。",
+      "outputFile": "docs/event/event-bus.md",
+      "acceptanceCriteria": [
+        "按域分类列出所有 EventMap 事件",
+        "每个事件标注参数签名",
+        "说明 ctx.on() / ctx.emit() / ctx.parallel() 使用模式",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/service/bus.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-026",
+      "title": "db & Collections & StorageService",
+      "description": "作为插件开发者，我想查阅数据库实例和存储服务接口。",
+      "outputFile": "docs/service/database.md",
+      "acceptanceCriteria": [
+        "列出 db 实例的接口",
+        "列出 Collections 导出",
+        "展开列出 StorageService 的所有公开方法名",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/service/db.ts, packages/hydrooj/src/service/storage.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-027",
+      "title": "ConnectionHandler & Handler & requireSudo",
+      "description": "作为插件开发者，我想查阅服务端处理器相关导出。",
+      "outputFile": "docs/service/handler.md",
+      "acceptanceCriteria": [
+        "列出 ConnectionHandler, Handler, requireSudo",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/service/server.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-028",
+      "title": "pipelineUtils",
+      "description": "作为插件开发者，我想查阅批量数据迭代工具。",
+      "outputFile": "docs/utils/pipeline-utils.md",
+      "acceptanceCriteria": [
+        "列出 iterateAllDomain, iterateAllUser, iterateAllContest, iterateAllPsdoc, iterateAllProblemInDomain, iterateAllProblem, iterateAllRecord",
+        "每个函数标注参数和回调签名概要",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/pipelineUtils.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-029",
+      "title": "判题相关 API",
+      "description": "作为插件开发者，我想查阅判题系统的扩展接口。",
+      "outputFile": "docs/handler/judge.md",
+      "acceptanceCriteria": [
+        "列出 JudgeHandler（标注 deprecated）",
+        "列出 JudgeResultCallbackContext, postJudge",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/handler/judge.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-030",
+      "title": "错误类",
+      "description": "作为插件开发者，我想查阅所有可用的错误类型。",
+      "outputFile": "docs/error/index.md",
+      "acceptanceCriteria": [
+        "列出基础错误类：HydroError, UserFacingError, BadRequestError, ForbiddenError, NotFoundError",
+        "按类别列出 hydrooj 自定义错误（权限/验证/未找到/业务逻辑）",
+        "说明 CreateError 使用方式",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/error.ts, @hydrooj/framework/error",
+      "dependsOn": []
+    },
+    {
+      "id": "US-031",
+      "title": "SettingService",
+      "description": "作为插件开发者，我想查阅设置服务的完整接口。",
+      "outputFile": "docs/service/setting-service.md",
+      "acceptanceCriteria": [
+        "列出 SettingService 类方法：get, setConfig, requestConfig, PreferenceSetting, AccountSetting, DomainSetting, DomainUserSetting, SystemSetting, loadConfig, saveConfig",
+        "每个方法一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/settings.ts",
+      "dependsOn": ["US-003"]
+    },
+    {
+      "id": "US-032",
+      "title": "工具库",
+      "description": "作为插件开发者，我想查阅所有工具函数。",
+      "outputFile": "docs/utils/lib.md",
+      "acceptanceCriteria": [
+        "列出 nanoid, isMoment, moment",
+        "列出 buildContent, mime, difficultyAlgorithm, rating, avatar, testdataConfig (parseConfig), sendMail, pwsh, UiContextBase",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Source: packages/hydrooj/src/lib/content.ts, mime.ts, difficulty.ts, rating.ts, avatar.ts, testdataConfig.ts, mail.ts, hash.hydro.ts, service/layers/base.ts",
+      "dependsOn": []
+    },
+    {
+      "id": "US-033",
+      "title": "Context, ctx, Service, EventMap (前端)",
+      "description": "作为插件开发者，我想查阅前端插件系统核心。",
+      "outputFile": "docs/ui/context.md",
+      "acceptanceCriteria": [
+        "列出 Context, ctx, Service, EventMap, Disposable, FiberState, Plugin",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/context.ts",
+      "dependsOn": []
+    },
+    {
+      "id": "US-034",
+      "title": "Page, NamedPage, AutoloadPage, addPage",
+      "description": "作为插件开发者，我想查阅前端页面注册系统。",
+      "outputFile": "docs/ui/page.md",
+      "acceptanceCriteria": [
+        "列出 Page, NamedPage, AutoloadPage 类及构造参数",
+        "列出 addPage() 函数",
+        "说明 beforeLoading / afterLoading 生命周期",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/misc/Page.ts, packages/ui-default/index.ts:43",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-035",
+      "title": "initPageLoader",
+      "description": "作为插件开发者，我想了解前端页面加载器的初始化。",
+      "outputFile": "docs/ui/page-loader.md",
+      "acceptanceCriteria": [
+        "列出 initPageLoader 函数",
+        "标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/hydro.ts",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-036",
+      "title": "Dialog 系统",
+      "description": "作为插件开发者，我想查阅前端对话框组件。",
+      "outputFile": "docs/ui/components/dialog.md",
+      "acceptanceCriteria": [
+        "列出 Dialog, InfoDialog, ActionDialog, ConfirmDialog 类",
+        "列出 prompt, confirm, alert 函数",
+        "列出 Field 接口",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/components/dialog/index.tsx",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-037",
+      "title": "Notification & Rotator & selectUser",
+      "description": "作为插件开发者，我想查阅通知、旋转和用户选择组件。",
+      "outputFile": "docs/ui/components/notification-misc.md",
+      "acceptanceCriteria": [
+        "列出 Notification 组件的 API",
+        "列出 Rotator 组件的 API",
+        "列出 selectUser 组件的 API",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/components/notification/index.ts, components/rotator.tsx, components/selectUser.tsx",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-038",
+      "title": "Socket",
+      "description": "作为插件开发者，我想查阅前端 WebSocket 客户端。",
+      "outputFile": "docs/ui/components/socket.md",
+      "acceptanceCriteria": [
+        "列出 Socket 的 API",
+        "标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/components/socket/index.ts",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-039",
+      "title": "uploadFiles",
+      "description": "作为插件开发者，我想查阅文件上传组件。",
+      "outputFile": "docs/ui/components/upload.md",
+      "acceptanceCriteria": [
+        "列出 uploadFiles 的 API",
+        "标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/components/upload.tsx",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-040",
+      "title": "download / ZipDownloader",
+      "description": "作为插件开发者，我想查阅 ZIP 下载相关接口。",
+      "outputFile": "docs/ui/components/zip-downloader.md",
+      "acceptanceCriteria": [
+        "列出 download 和 ZipDownloader 的导出",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/components/zipDownloader/index.ts",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-041",
+      "title": "loadMonaco",
+      "description": "作为插件开发者，我想查阅 Monaco 编辑器加载器。",
+      "outputFile": "docs/ui/components/monaco.md",
+      "acceptanceCriteria": [
+        "列出 loadMonaco 的 API",
+        "标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/components/monaco/loader.ts",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-042",
+      "title": "AutoComplete 组件",
+      "description": "作为插件开发者，我想查阅所有自动完成组件。",
+      "outputFile": "docs/ui/components/autocomplete.md",
+      "acceptanceCriteria": [
+        "列出 AutoComplete, AssignSelectAutoComplete, CustomSelectAutoComplete, DomainSelectAutoComplete, ProblemSelectAutoComplete, UserSelectAutoComplete",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/components/autocomplete/ 目录下所有文件",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-043",
+      "title": "api() & request 工具",
+      "description": "作为插件开发者，我想查阅前端 HTTP 请求工具。",
+      "outputFile": "docs/ui/utils/request.md",
+      "acceptanceCriteria": [
+        "列出 api(), request.ajax(), request.post(), request.get(), request.postFile()",
+        "列出 getAvailableLangs()",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/utils/base.ts, packages/ui-default/utils/index.ts",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-044",
+      "title": "模板 & 国际化工具",
+      "description": "作为插件开发者，我想查阅前端模板和国际化工具。",
+      "outputFile": "docs/ui/utils/template.md",
+      "acceptanceCriteria": [
+        "列出 tpl(), tpl.typoMsg(), rawHtml(), substitute(), i18n()",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/utils/base.ts",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-045",
+      "title": "DOM & 异步 & 其他工具函数",
+      "description": "作为插件开发者，我想查阅前端 DOM 工具、异步工具和其他零散工具。",
+      "outputFile": "docs/ui/utils/misc.md",
+      "acceptanceCriteria": [
+        "列出 zIndexManager, emulateAnchorClick(), addSpeculationRules(), getTheme()",
+        "列出 delay(), withTransitionCallback(), setTemporaryViewTransitionNames()",
+        "列出 secureRandomString(), mongoId(), createZipStream, createZipBlob, pipeStream",
+        "列出 base64, pjax, mediaQuery, loadReactRedux",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/utils/base.ts, packages/ui-default/utils/index.ts",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-046",
+      "title": "懒加载系统",
+      "description": "作为插件开发者，我想查阅前端模块懒加载机制。",
+      "outputFile": "docs/ui/lazyload.md",
+      "acceptanceCriteria": [
+        "列出 load(), getFeatures(), loadFeatures(), provideFeature(), loaded",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/lazyload.ts",
+      "dependsOn": ["US-033"]
+    },
+    {
+      "id": "US-047",
+      "title": "第三方库导出",
+      "description": "作为插件开发者，我想查阅可直接使用的前端第三方库。",
+      "outputFile": "docs/ui/third-party.md",
+      "acceptanceCriteria": [
+        "列出 $ (jQuery), _ (lodash), React, ReactDOM, jsxRuntime, redux (react-redux), AnsiUp",
+        "标注这些是直接 re-export",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/index.ts:17-29",
+      "dependsOn": []
+    },
+    {
+      "id": "US-048",
+      "title": "@hydrooj/utils/lib/common 重新导出",
+      "description": "作为插件开发者，我想查阅从 @hydrooj/utils 重新导出的通用工具。",
+      "outputFile": "docs/ui/utils/common.md",
+      "acceptanceCriteria": [
+        "列出从 @hydrooj/utils/lib/common 重新导出的所有 API",
+        "每个标注一句话描述",
+        "人工 review：API 名称、分类、描述与源码一致"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Source: packages/ui-default/index.ts:16, @hydrooj/utils/lib/common",
+      "dependsOn": []
+    }
+  ]
+}
