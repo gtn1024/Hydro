@@ -35,4 +35,16 @@ after each iteration and it's included in prompts for context.
   - `subscribe` is dual-purpose: works as both a method decorator and a class decorator for WebSocket handlers
   - `Types.Boolean` is always optional (3rd tuple element is `true`); `Types.Name` is deprecated
 ---
+## 2026-04-03 - US-003
+- Documented Context class (14 methods across 4 categories: routing, events, lifecycle, Hydro-specific) and 4 properties
+- Documented Service base class with usage example
+- Documented 4 types: Fiber, FiberState, Disposable, Plugin
+- Created `docs/context/index.md`
+- **Learnings:**
+  - `Context` extends `cordis.Context` — many core methods (on, emit, parallel, plugin, effect, mixin, inject) come from cordis, not defined locally
+  - Hydro adds methods via two mixins: `ApiMixin` (addScript, setImmediate, provideModule, injectUI, broadcast) and `WebService` (Route, Connection)
+  - `broadcast` is cluster-aware — uses PM2 bus in cluster mode, MongoDB event bus otherwise
+  - `Route` and `Connection` are NOT methods on `cordis.Context` — they're mixed in by `WebService` via `ctx.mixin('server', ['Route', 'Connection'])`
+  - `injectUI` injects into typed slots: `Nav`, `ProblemAdd`, `ControlPanel`, `DomainManage`, `Notification`, `UserDropdown`
+---
 
