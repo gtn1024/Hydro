@@ -115,3 +115,15 @@ after each iteration and it's included in prompts for context.
   - `getRoles` has overloads accepting either `domainId: string` or `ddoc: DomainDoc` — resolves to doc internally
   - `DomainDoc` extends `Record<string, any>` so it allows arbitrary additional fields beyond the declared ones
 ---
+
+## 2026-04-03 - US-009
+- Documented TokenModel: 9 public static methods across 3 categories (CRUD, session queries, bulk operations), 8 token type constants, properties, indexes, and TokenDoc type
+- Created `docs/models/token-model.md` with method signatures, constant tables, and @ArgMethod summary
+- **Learnings:**
+  - `TokenModel` is a static-only class like `UserModel`, `ProblemModel`, `RecordModel`, `DomainModel` — all methods are `static`
+  - Uses MongoDB TTL index (`expireAfterSeconds: 0`) on `expireAt` for automatic cleanup of expired tokens
+  - `TokenDoc` has an index signature `[key: string]: any` — payload fields vary by token type (uid, email, challenge, etc.)
+  - 5 of 9 methods are decorated with `@ArgMethod`: `get`, `del`, `getSessionListByUid`, `getMostRecentSessionByUid`, `delByUid`
+  - `createOrUpdate` uses `data` as both the search filter and the update payload — it finds by `{tokenType, ...data}` then either adds or updates
+  - `delByUid` deletes ALL token types for a user (not just sessions) — used in ban/logout flows
+---
