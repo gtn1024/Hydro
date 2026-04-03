@@ -13,6 +13,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-029
+- Documented JudgeHandler: 4 classes (JudgeResultCallbackContext, JudgeConnectionHandler, JudgeFilesDownloadHandler, JudgeFileUpdateHandler), 1 utility function (processJudgeFileCallback), 3 deprecated functions (postJudge, next, end), plus lifecycle registration
+- Files changed: `docs/handler/judge.md` (created)
+- **Learnings:**
+  - `JudgeResultCallbackContext` serializes `next`/`end` calls via an internal promise chain — no external locking needed
+  - Controlled rejudge mode (`meta.rejudge === 'controlled'`) writes to `record.collHistory` instead of live records, enabling review-before-apply
+  - The deprecated `postJudge`, `next`, `end` are thin wrappers forwarding to static methods on `JudgeResultCallbackContext`
+  - `apply.next` and `apply.end` are deprecated properties attached to the `apply` function itself — unusual pattern
+
+---
+
 ## 2026-04-03 - US-028
 - Documented pipelineUtils: 7 batch iteration functions + 1 type interface
 - Files changed: `docs/utils/pipeline-utils.md` (created)

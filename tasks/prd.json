@@ -521,11 +521,12 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/hydrooj/src/handler/judge.ts",
       "dependsOn": [
         "US-003"
-      ]
+      ],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-030",
@@ -853,6 +854,6 @@
     }
   ],
   "metadata": {
-    "updatedAt": "2026-04-03T05:01:13.719Z"
+    "updatedAt": "2026-04-03T05:03:39.003Z"
   }
 }
