@@ -59,3 +59,16 @@ after each iteration and it's included in prompts for context.
   - `SystemKeys` interface in `packages/hydrooj/src/interface.ts` defines 20 typed keys; arbitrary string keys also work (return `any`)
 ---
 
+## 2026-04-03 - US-005
+- Documented UserModel: 21 static methods across 4 categories (lookup, mutation, creation, groups), 5 properties, and 7 User instance methods
+- Created `docs/models/user.md` with categorized method signatures, parameter tables, and User class reference
+- **Learnings:**
+  - `UserModel` is a plain static class (not a serviceInstance proxy like SystemModel) — all methods are `static`
+  - Cache key format: `type/key/domainId` where type is `id`, `name`, or `mail`
+  - `User` class constructor merges `Udoc` + domain user doc; `init()` fires `user/get` event for plugin hooks
+  - Virtual users (`_id < -999`) live in a separate `vuser` collection; `getById` automatically routes to it
+  - `ban` both zeros privileges AND revokes all tokens via `token.delByUid`
+  - `handleMailLower` normalizes Gmail addresses: strips dots and `+` suffixes, maps `googlemail.com` → `gmail.com`
+  - `create` auto-allocates UIDs by finding max `_id + 1` and retries on duplicate key collision
+---
+
