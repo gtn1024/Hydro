@@ -19,6 +19,18 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-043
+- Documented api(), request object (ajax, post, get, postFile), getAvailableLangs()
+- Files changed: `docs/ui/utils/request.md` (created)
+- **Learnings:**
+  - `request` is a plain object (not a class) with 4 methods — `ajax` is the core, others delegate to it
+  - `request.post()` has polymorphic input handling — accepts jQuery form, DOM form, string, or plain object, each serialized differently
+  - `request.ajax()` preserves the original call stack by capturing `new Error().stack` at call time and attaching it on rejection
+  - `api()` is a thin wrapper over `request.post()` targeting the `/d/{domainId}/api/{method}` convention — error field in response body triggers throw
+  - `getAvailableLangs()` filters `window.LANGS` by excluding prefix keys (e.g. `"en"` when `"en.section"` exists), `hidden` entries, and `disabled` entries
+
+---
+
 ## 2026-04-03 - US-041
 - Documented loadMonaco: 1 main async function (load), 1 deprecated function (legacyLoadExternalModule), return type with 4 properties, 5 built-in feature loaders
 - Files changed: `docs/ui/components/monaco.md` (created)
