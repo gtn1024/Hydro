@@ -1,0 +1,312 @@
+{
+  "version": 1,
+  "sessionId": "a36f9e10-cb30-4955-81c4-75a16c7e3521",
+  "status": "running",
+  "startedAt": "2026-04-03T03:32:29.727Z",
+  "updatedAt": "2026-04-03T03:36:54.314Z",
+  "currentIteration": 0,
+  "maxIterations": 0,
+  "tasksCompleted": 0,
+  "isPaused": false,
+  "agentPlugin": "claude",
+  "trackerState": {
+    "plugin": "json",
+    "prdPath": "./tasks/prd.json",
+    "totalTasks": 48,
+    "tasks": [
+      {
+        "id": "US-001",
+        "title": "@hydrooj/framework 重新导出",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-002",
+        "title": "@hydrooj/framework 装饰器 & 验证器",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-003",
+        "title": "Context & Service",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-004",
+        "title": "SystemModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-005",
+        "title": "UserModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-006",
+        "title": "ProblemModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-007",
+        "title": "RecordModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-008",
+        "title": "DomainModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-009",
+        "title": "TokenModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-010",
+        "title": "ScheduleModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-011",
+        "title": "SolutionModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-012",
+        "title": "MessageModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-013",
+        "title": "OauthModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-014",
+        "title": "BlackListModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-015",
+        "title": "StorageModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-016",
+        "title": "TaskModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-017",
+        "title": "TrainingModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-018",
+        "title": "OpcountModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-019",
+        "title": "OplogModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-020",
+        "title": "SettingModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-021",
+        "title": "DiscussionModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-022",
+        "title": "DocumentModel & DocType",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-023",
+        "title": "BuiltinModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-024",
+        "title": "ContestModel",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-025",
+        "title": "EventMap (事件总线)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-026",
+        "title": "db & Collections & StorageService",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-027",
+        "title": "ConnectionHandler & Handler & requireSudo",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-028",
+        "title": "pipelineUtils",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-029",
+        "title": "判题相关 API",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-030",
+        "title": "错误类",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-031",
+        "title": "SettingService",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-032",
+        "title": "工具库",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-033",
+        "title": "Context, ctx, Service, EventMap (前端)",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-034",
+        "title": "Page, NamedPage, AutoloadPage, addPage",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-035",
+        "title": "initPageLoader",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-036",
+        "title": "Dialog 系统",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-037",
+        "title": "Notification & Rotator & selectUser",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-038",
+        "title": "Socket",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-039",
+        "title": "uploadFiles",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-040",
+        "title": "download / ZipDownloader",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-041",
+        "title": "loadMonaco",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-042",
+        "title": "AutoComplete 组件",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-043",
+        "title": "api() & request 工具",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-044",
+        "title": "模板 & 国际化工具",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-045",
+        "title": "DOM & 异步 & 其他工具函数",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-046",
+        "title": "懒加载系统",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-047",
+        "title": "第三方库导出",
+        "status": "open",
+        "completedInSession": false
+      },
+      {
+        "id": "US-048",
+        "title": "@hydrooj/utils/lib/common 重新导出",
+        "status": "open",
+        "completedInSession": false
+      }
+    ]
+  },
+  "iterations": [],
+  "skippedTaskIds": [],
+  "cwd": "/Users/getn/repos/github/HydroApis",
+  "activeTaskIds": [],
+  "subagentPanelVisible": false
+}

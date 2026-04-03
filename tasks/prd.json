@@ -1,18 +1,7 @@
 {
   "name": "Hydro 插件开发 API 文档",
-  "branchName": "ralph/hydro-plugin-api-docs",
   "description": "为 hydrooj 后端包和 @hydrooj/ui-default 前端包的所有对外暴露接口编写完整的 API 参考文档。每个 US 对应一个 API 模块，逐一阅读源码并文档化。最终输出为 VitePress 文档站点的 Markdown 文件。",
-  "functionalRequirements": [
-    "FR-1: 每个 US 对应一个或少数几个源文件",
-    "FR-2: 每个 API 条目必须包含：名称和一句话描述",
-    "FR-3: API 按功能分类组织（目录结构即分类）",
-    "FR-4: 标注已废弃的 API",
-    "FR-5: 覆盖 plugin-api.ts 中 100% 的 export 语句",
-    "FR-6: 覆盖 ui-default/index.ts 中 100% 的 export 语句",
-    "FR-7: namespace export 的模型需展开所有公开方法名",
-    "FR-8: 每个 US 输出一个独立的 Markdown 文件到 docs/ 目录",
-    "FR-9: 目录结构作为分类依据，文件名使用 kebab-case"
-  ],
+  "branchName": "ralph/hydro-plugin-api-docs",
   "userStories": [
     {
       "id": "US-001",
@@ -25,9 +14,10 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 1,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/hydrooj/src/plugin-api.ts:8-11, @hydrooj/framework 包",
-      "dependsOn": []
+      "dependsOn": [],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-002",
@@ -75,7 +65,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/system.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-005",
@@ -90,7 +82,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/user.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-006",
@@ -106,7 +100,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/problem.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-007",
@@ -121,7 +117,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/record.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-008",
@@ -136,7 +134,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/domain.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-009",
@@ -151,7 +151,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/token.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-010",
@@ -166,7 +168,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/schedule.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-011",
@@ -181,7 +185,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/solution.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-012",
@@ -196,7 +202,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/message.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-013",
@@ -211,7 +219,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/oauth.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-014",
@@ -226,7 +236,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/blacklist.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-015",
@@ -241,7 +253,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/storage.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-016",
@@ -256,7 +270,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/task.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-017",
@@ -271,7 +287,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/training.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-018",
@@ -286,7 +304,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/opcount.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-019",
@@ -301,7 +321,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/oplog.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-020",
@@ -316,7 +338,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/setting.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-021",
@@ -331,7 +355,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/discussion.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-022",
@@ -347,7 +373,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/document.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-023",
@@ -363,7 +391,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/builtin.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-024",
@@ -378,7 +408,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/model/contest.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-025",
@@ -394,7 +426,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/service/bus.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-026",
@@ -411,7 +445,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/service/db.ts, packages/hydrooj/src/service/storage.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-027",
@@ -426,7 +462,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/service/server.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-028",
@@ -441,7 +479,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/pipelineUtils.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-029",
@@ -457,7 +497,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/handler/judge.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-030",
@@ -488,7 +530,9 @@
       "priority": 2,
       "passes": false,
       "notes": "Source: packages/hydrooj/src/settings.ts",
-      "dependsOn": ["US-003"]
+      "dependsOn": [
+        "US-003"
+      ]
     },
     {
       "id": "US-032",
@@ -535,7 +579,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/misc/Page.ts, packages/ui-default/index.ts:43",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-035",
@@ -550,7 +596,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/hydro.ts",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-036",
@@ -567,7 +615,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/components/dialog/index.tsx",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-037",
@@ -584,7 +634,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/components/notification/index.ts, components/rotator.tsx, components/selectUser.tsx",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-038",
@@ -599,7 +651,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/components/socket/index.ts",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-039",
@@ -614,7 +668,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/components/upload.tsx",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-040",
@@ -629,7 +685,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/components/zipDownloader/index.ts",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-041",
@@ -644,7 +702,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/components/monaco/loader.ts",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-042",
@@ -659,7 +719,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/components/autocomplete/ 目录下所有文件",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-043",
@@ -675,7 +737,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/utils/base.ts, packages/ui-default/utils/index.ts",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-044",
@@ -690,7 +754,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/utils/base.ts",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-045",
@@ -708,7 +774,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/utils/base.ts, packages/ui-default/utils/index.ts",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-046",
@@ -723,7 +791,9 @@
       "priority": 3,
       "passes": false,
       "notes": "Source: packages/ui-default/lazyload.ts",
-      "dependsOn": ["US-033"]
+      "dependsOn": [
+        "US-033"
+      ]
     },
     {
       "id": "US-047",
@@ -755,5 +825,8 @@
       "notes": "Source: packages/ui-default/index.ts:16, @hydrooj/utils/lib/common",
       "dependsOn": []
     }
-  ]
+  ],
+  "metadata": {
+    "updatedAt": "2026-04-03T03:36:54.313Z"
+  }
 }
