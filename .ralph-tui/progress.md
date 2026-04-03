@@ -14,6 +14,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-046
+- Documented lazy loading system: load(), getFeatures(), loadFeatures(), provideFeature(), loaded
+- Files changed: `docs/ui/lazyload.md` (created)
+- **Learnings:**
+  - `load()` uses a script-injection + resolver-callback pattern — creates a `<script>` tag, registers `window.lazyModuleResolver[name]`, and waits for the loaded script to call it back. Special-cases `echarts` and `moment` with native `import()`.
+  - Feature system has dual sources: plugin-registered `features` map (via `provideFeature()`) and legacy `window.externalModules`. `getFeatures()` queries both, matching exact name and `name@version` variants.
+  - `loadFeatures()` resolves feature entries polymorphically: functions called directly, URL strings loaded via `legacyLoadExternalModule`, module paths loaded via `load()` then `.apply` extracted.
+  - Idempotency is module-level: `loaded` array prevents double-loading; `lazyModules` object caches load promises.
+
+---
+
 ## 2026-04-03 - US-045
 - Documented 16 utilities across 4 categories: DOM (zIndexManager, emulateAnchorClick, addSpeculationRules, getTheme), Async (delay, withTransitionCallback, setTemporaryViewTransitionNames), Streams/Encoding (secureRandomString, mongoId, createZipStream, createZipBlob, pipeStream, base64), Framework (pjax, mediaQuery, loadReactRedux)
 - Files changed: `docs/ui/utils/misc.md` (created)
