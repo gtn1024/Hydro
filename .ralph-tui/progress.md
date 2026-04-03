@@ -173,3 +173,14 @@ after each iteration and it's included in prompts for context.
   - `set()` uses `findOneAndUpdate` with upsert — idempotent account linking
   - No bus events emitted — this model is purely CRUD for account mappings
 ---
+
+## 2026-04-03 - US-014
+- Documented BlackListModel: 3 public static methods (add, get, del), all decorated with `@ArgMethod`
+- Created `docs/models/blacklist-model.md` with method signatures, expiration logic, and TTL index notes
+- **Learnings:**
+  - `BlackListModel` is a static-only class like `UserModel`, `ProblemModel`, etc. — all methods are `static`
+  - `add` uses complex expiration logic: `0` → 1000 months, `number` → N months, `Date` → direct, omitted → 365 days
+  - MongoDB TTL index on `expireAt` with `expireAfterSeconds: 0` handles automatic cleanup
+  - `add` uses `findOneAndUpdate` with upsert — idempotent, updates `expireAt` on existing entries
+  - No bus events — purely CRUD like `TokenModel` and `OauthModel`
+---

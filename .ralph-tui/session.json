@@ -3,10 +3,10 @@
   "sessionId": "a36f9e10-cb30-4955-81c4-75a16c7e3521",
   "status": "running",
   "startedAt": "2026-04-03T03:32:29.727Z",
-  "updatedAt": "2026-04-03T04:20:39.602Z",
-  "currentIteration": 12,
+  "updatedAt": "2026-04-03T04:22:33.688Z",
+  "currentIteration": 13,
   "maxIterations": 0,
-  "tasksCompleted": 12,
+  "tasksCompleted": 13,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -89,8 +89,8 @@
       {
         "id": "US-013",
         "title": "OauthModel",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-014",
@@ -424,6 +424,16 @@
       "durationMs": 101528,
       "startedAt": "2026-04-03T04:12:41.110Z",
       "endedAt": "2026-04-03T04:14:22.638Z"
+    },
+    {
+      "iteration": 13,
+      "status": "completed",
+      "taskId": "US-013",
+      "taskTitle": "OauthModel",
+      "taskCompleted": true,
+      "durationMs": 375861,
+      "startedAt": "2026-04-03T04:14:23.740Z",
+      "endedAt": "2026-04-03T04:20:39.601Z"
     }
   ],
   "skippedTaskIds": [],
