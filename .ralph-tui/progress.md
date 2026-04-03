@@ -13,6 +13,15 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-027
+- Documented Handler, ConnectionHandler, requireSudo: 2 handler classes + 1 decorator
+- Files changed: `docs/service/handler.md` (created)
+- **Learnings:**
+  - Handler and ConnectionHandler are thin subclasses of `@hydrooj/framework` originals, adding only `domain: DomainDoc` — all other functionality comes from framework base classes + handler mixins registered at server startup
+  - `requireSudo` is a TypeScript method decorator (property descriptor pattern) that checks `session.sudo` timestamp with 1-hour validity, saves request context to `session.sudoArgs` on failure, and redirects to sudo page
+  - The `domain` property on both handlers is injected via the `handler/create` lifecycle hook in `server.ts`, not via constructor
+---
+
 ## 2026-04-03 - US-026
 - Documented MongoService (ctx.db): 2 properties + 6 methods + 1 static method across categories: Properties, Collection Access, Pagination, Index Management, Lifecycle
 - Documented Collections interface: 27 collection name-to-type mappings augmented via declaration merging in interface.ts
