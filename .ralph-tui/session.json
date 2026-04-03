@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:50:50.123Z",
-  "currentIteration": 30,
+  "updatedAt": "2026-04-03T05:54:06.909Z",
+  "currentIteration": 31,
   "maxIterations": 0,
-  "tasksCompleted": 28,
+  "tasksCompleted": 29,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -287,8 +287,8 @@
       {
         "id": "US-046",
         "title": "懒加载系统",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-047",
@@ -604,6 +604,16 @@
       "durationMs": 195786,
       "startedAt": "2026-04-03T05:45:35.957Z",
       "endedAt": "2026-04-03T05:48:51.743Z"
+    },
+    {
+      "iteration": 31,
+      "status": "completed",
+      "taskId": "US-046",
+      "taskTitle": "懒加载系统",
+      "taskCompleted": true,
+      "durationMs": 117279,
+      "startedAt": "2026-04-03T05:48:52.843Z",
+      "endedAt": "2026-04-03T05:50:50.122Z"
     }
   ],
   "skippedTaskIds": [],

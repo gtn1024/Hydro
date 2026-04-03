@@ -11,6 +11,19 @@ after each iteration and it's included in prompts for context.
 - `packages/ui-default/utils/` uses a two-file export pattern: `base.ts` holds core functions, `index.ts` re-exports via `export * from './base'` plus adds higher-level utilities and re-exports from sibling modules (base64, pjax, mediaQuery, loadReactRedux)
 - `base64.js` and `pjax.js` are plain `.js` files (not `.ts`) in the utils directory — legacy code that uses CommonJS-style object patterns with `export default`
 - `createZipStream` is not a function but a property alias for `window.ZIP` — the actual ZIP stream constructor comes from the `streamsaver` polyfill loaded at the top of `index.ts`
+- `ReactDOM` export in `api.ts` is a merged object combining `react-dom` + `react-dom/client` via `Object.assign` — plugins get both legacy and modern APIs from a single import
+- `$` (jQuery) is both re-exported and registered globally (`window.$`, `window.jQuery`) — dual registration for compatibility
+
+---
+
+## 2026-04-03 - US-047
+- Documented 7 third-party library re-exports: $ (jQuery), _ (Lodash), React, ReactDOM, jsxRuntime, redux (react-redux), AnsiUp
+- Files changed: `docs/ui/third-party.md` (created)
+- **Learnings:**
+  - `ReactDOM` is not a simple re-export — it merges `react-dom` and `react-dom/client` via `Object.assign(ReactDOMMain, ReactDOMClient)`, providing both legacy and modern APIs
+  - `redux` is a namespace re-export (`export * as redux from 'react-redux'`) — not the standalone Redux library, but the React-Redux bindings
+  - `jsxRuntime` re-exports `react/jsx-runtime` — the modern JSX transform target
+  - `$` is both re-exported and set on `window` for legacy script compatibility
 
 ---
 
