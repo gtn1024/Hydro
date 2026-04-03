@@ -540,9 +540,10 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/hydrooj/src/error.ts, @hydrooj/framework/error",
-      "dependsOn": []
+      "dependsOn": [],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-031",
@@ -854,6 +855,6 @@
     }
   ],
   "metadata": {
-    "updatedAt": "2026-04-03T05:03:39.003Z"
+    "updatedAt": "2026-04-03T05:09:07.974Z"
   }
 }

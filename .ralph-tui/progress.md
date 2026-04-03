@@ -13,6 +13,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-030
+- Documented Error Classes: 5 base error classes from framework + 60 Hydro custom errors organized by category (Internal, Permission/Auth, User/Domain, Contest/Homework, Training, Problem/File, Validation/Logic, Not Found, Document Sub-type Not Found), plus CreateError factory function usage guide
+- Files changed: `docs/error/index.md` (created)
+- **Learnings:**
+  - `CreateError` (aliased as `Err` internally) creates error classes with template message support (`{0}`, `{1}`, `{2}` placeholders mapped to constructor args via `this.params`)
+  - Two errors use dynamic message functions: `PermissionError` auto-resolves bigint perm flags to human-readable descriptions, `PrivilegeError` returns "You're not logged in" when missing `PRIV_USER_PROFILE`
+  - Document sub-type errors (ProblemNotFoundError, etc.) inherit from `DocumentNotFoundError` (not directly from `NotFoundError`), creating a 3-level hierarchy
+  - `OpcountExceededError` is a ForbiddenError (403) — rate limiting is treated as a permission denial, not a 429
+
+---
+
 ## 2026-04-03 - US-029
 - Documented JudgeHandler: 4 classes (JudgeResultCallbackContext, JudgeConnectionHandler, JudgeFilesDownloadHandler, JudgeFileUpdateHandler), 1 utility function (processJudgeFileCallback), 3 deprecated functions (postJudge, next, end), plus lifecycle registration
 - Files changed: `docs/handler/judge.md` (created)
