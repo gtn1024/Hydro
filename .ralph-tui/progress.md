@@ -8,6 +8,23 @@ after each iteration and it's included in prompts for context.
 *Add reusable patterns discovered during development here.*
 
 - Frontend plugin system (`packages/ui-default/context.ts`) is a thin Cordis wrapper — `Context`, `Service` extend cordis base classes with no additional methods; `Disposable`, `FiberState`, `Plugin` are pure re-exports; `EventMap` is an empty interface designed for declaration merging by plugins
+- `packages/ui-default/utils/` uses a two-file export pattern: `base.ts` holds core functions, `index.ts` re-exports via `export * from './base'` plus adds higher-level utilities and re-exports from sibling modules (base64, pjax, mediaQuery, loadReactRedux)
+- `base64.js` and `pjax.js` are plain `.js` files (not `.ts`) in the utils directory — legacy code that uses CommonJS-style object patterns with `export default`
+- `createZipStream` is not a function but a property alias for `window.ZIP` — the actual ZIP stream constructor comes from the `streamsaver` polyfill loaded at the top of `index.ts`
+
+---
+
+## 2026-04-03 - US-045
+- Documented 16 utilities across 4 categories: DOM (zIndexManager, emulateAnchorClick, addSpeculationRules, getTheme), Async (delay, withTransitionCallback, setTemporaryViewTransitionNames), Streams/Encoding (secureRandomString, mongoId, createZipStream, createZipBlob, pipeStream, base64), Framework (pjax, mediaQuery, loadReactRedux)
+- Files changed: `docs/ui/utils/misc.md` (created)
+- **Learnings:**
+  - `utils/` has a two-file export pattern: `base.ts` holds core functions, `index.ts` adds higher-level utilities and re-exports sibling modules
+  - `base64.js` and `pjax.js` are plain `.js` files — legacy code with `export default` object pattern
+  - `createZipStream` is a property alias (`window.ZIP`), not a function — the constructor comes from `streamsaver` polyfill
+  - `pjax` is the most complex utility (~150 lines) — manages history state, XHR lifecycle, fragment replacement, and view transitions
+  - `loadReactRedux` dynamically imports the entire Redux stack (4 packages in parallel) and returns a ready-to-use store
+
+---
 - Dialog subclasses (InfoDialog, ActionDialog, ConfirmDialog) are thin preconfigurations of the base `Dialog` class — they only set default `$action` buttons and `cancelByClickingBack`/`cancelByEsc` flags in the constructor, no method overrides
 - `prompt()` is the most complex dialog function — it uses React state for form field management, caches values via closure (`valueCache`), and renders different widgets (text input, select, UserSelectAutoComplete, DomainSelectAutoComplete, checkbox) based on `Field.type`
 - DocumentModel is the foundational data-access layer that higher-level models (Problem, Contest, Training, Discussion) delegate to — each specifies a `docType` constant and calls DocumentModel functions

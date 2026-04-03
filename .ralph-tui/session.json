@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:45:34.860Z",
-  "currentIteration": 28,
+  "updatedAt": "2026-04-03T05:48:51.744Z",
+  "currentIteration": 29,
   "maxIterations": 0,
-  "tasksCompleted": 26,
+  "tasksCompleted": 27,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -275,8 +275,8 @@
       {
         "id": "US-044",
         "title": "模板 & 国际化工具",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-045",
@@ -584,6 +584,16 @@
       "durationMs": 104881,
       "startedAt": "2026-04-03T05:41:56.589Z",
       "endedAt": "2026-04-03T05:43:41.470Z"
+    },
+    {
+      "iteration": 29,
+      "status": "completed",
+      "taskId": "US-044",
+      "taskTitle": "模板 & 国际化工具",
+      "taskCompleted": true,
+      "durationMs": 112288,
+      "startedAt": "2026-04-03T05:43:42.570Z",
+      "endedAt": "2026-04-03T05:45:34.858Z"
     }
   ],
   "skippedTaskIds": [],
