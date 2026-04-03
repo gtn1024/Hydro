@@ -149,3 +149,16 @@ after each iteration and it's included in prompts for context.
   - `del` performs parallel deletion of both the document and its status records
   - No exported types from `solution.ts` — uses generic `Document` from the document subsystem
 ---
+
+## 2026-04-03 - US-012
+- Documented MessageModel: 8 public static methods across 4 categories (sending, lookup, deletion, statistics), 5 flag constants, properties, MessageDoc type, and 2 indexes
+- Created `docs/models/message-model.md`
+- **Learnings:**
+  - `MessageModel` is a static-only class like all other models — all methods are `static`
+  - Uses a single MongoDB collection: `message`
+  - 5 flag bitmask constants: `FLAG_UNREAD`(1), `FLAG_ALERT`(2), `FLAG_RICHTEXT`(4), `FLAG_INFO`(8), `FLAG_I18N`(16)
+  - `sendInfo` is transient — broadcasts via `user/message` but does NOT persist to the database
+  - `sendNotification` targets users with `PRIV_VIEW_SYSTEM_NOTIFICATION` and translates the message per each user's `viewLang`
+  - `send` auto-increments `unreadMsg` on recipients when `FLAG_UNREAD` is set
+  - 3 methods decorated with `@ArgMethod`: `send`, `getByUser`, `count`
+---
