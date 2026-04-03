@@ -184,3 +184,16 @@ after each iteration and it's included in prompts for context.
   - `add` uses `findOneAndUpdate` with upsert — idempotent, updates `expireAt` on existing entries
   - No bus events — purely CRUD like `TokenModel` and `OauthModel`
 ---
+
+## 2026-04-03 - US-015
+- Documented StorageModel: 11 public static methods across 4 categories (upload/write, read/download, file operations, utility) + 1 private method (`_swapId`)
+- Created `docs/models/storage-model.md` with categorized method signatures, properties, indexes, and lifecycle notes
+- **Learnings:**
+  - `StorageModel` is a static-only class like `UserModel`, `ProblemModel`, etc. — all methods are `static`
+  - `del()` is soft-delete — sets `autoDelete` to 7 days out, cleaned by hourly `storage.prune` worker
+  - `copy()` creates a lightweight `link` reference to the original storage object rather than duplicating data in object storage
+  - `_swapId` (private) swaps two file records' metadata to handle linked-file deletion safely — ensures files still referenced remain accessible
+  - `signDownloadLink` supports alternative endpoints for `user` and `judge` access patterns
+  - `apply()` seeds a `storage.prune` schedule (hourly) and registers a domain-delete handler; indexes only created on `NODE_APP_INSTANCE=0`
+  - File IDs are generated as `{3-char-nanoid}/{nanoid}{ext}` with `_` and `-` replaced by `0`
+---
