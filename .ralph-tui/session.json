@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:18:19.091Z",
-  "currentIteration": 17,
+  "updatedAt": "2026-04-03T05:20:36.309Z",
+  "currentIteration": 18,
   "maxIterations": 0,
-  "tasksCompleted": 16,
+  "tasksCompleted": 17,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -209,8 +209,8 @@
       {
         "id": "US-033",
         "title": "Context, ctx, Service, EventMap (前端)",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-034",
@@ -474,6 +474,16 @@
       "durationMs": 220945,
       "startedAt": "2026-04-03T05:11:38.412Z",
       "endedAt": "2026-04-03T05:15:19.357Z"
+    },
+    {
+      "iteration": 18,
+      "status": "completed",
+      "taskId": "US-033",
+      "taskTitle": "Context, ctx, Service, EventMap (前端)",
+      "taskCompleted": true,
+      "durationMs": 178629,
+      "startedAt": "2026-04-03T05:15:20.460Z",
+      "endedAt": "2026-04-03T05:18:19.089Z"
     }
   ],
   "skippedTaskIds": [],

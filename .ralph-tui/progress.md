@@ -15,6 +15,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-034
+- Documented frontend page registration system: Page, NamedPage, AutoloadPage classes, addPage() function, beforeLoading/afterLoading lifecycle, PageLoader internals
+- Files changed: `docs/ui/page.md` (created)
+- **Learnings:**
+  - `NamedPage` is an empty subclass of `Page` — purely semantic, no additional behavior
+  - `AutoloadPage` sets `autoload = true` in constructor; autoload pages run hooks on every route regardless of name matching
+  - `addPage()` accepts both `Page` instances and plain functions — plain functions are called immediately during PageLoader construction
+  - Page lifecycle execution order: autoload beforeLoading → named beforeLoading → autoload afterLoading → named afterLoading
+  - `loadPage` callback enables recursive page loading with depth cap of 32
+---
+
 ## 2026-04-03 - US-033
 - Documented frontend plugin system core: Context, ctx, Service, EventMap, Events, Fiber, Disposable, FiberState, Plugin
 - Files changed: `docs/ui/context.md` (created)
