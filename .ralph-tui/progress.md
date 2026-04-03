@@ -102,3 +102,16 @@ after each iteration and it's included in prompts for context.
   - `judge()` follows problem references — if the problem has `reference`, it resolves to the source problem for judging
   - `submissionPriority()` throttles high-frequency submitters by penalizing recent submissions and pending tasks
 ---
+
+## 2026-04-03 - US-008
+- Documented DomainModel: 25 public static methods across 4 categories (CRUD, user management, role management, join settings) + constants, properties, types, and 7 bus events
+- Created `docs/models/domain-model.md` with categorized method signatures, constant tables, and cache behavior notes
+- **Learnings:**
+  - `DomainModel` is a static-only class like `UserModel`, `ProblemModel`, and `RecordModel` — all methods are `static`
+  - Uses 2 MongoDB collections: `domain` (domain docs) and `domain.user` (per-domain user membership)
+  - LRU cache keyed by `id::{lower}` and `host::{host}` with 5-min TTL; `getByHost` caches `null` misses too
+  - `getDomainUser` computes effective role considering system privileges (`PRIV_MANAGE_ALL_DOMAIN` → root, `PRIV_USER_PROFILE`/`PRIV_VIEW_ALL_DOMAIN` checks)
+  - `setUserRole` supports both single UID and batch (array) via `MaybeArray<number>`
+  - `getRoles` has overloads accepting either `domainId: string` or `ddoc: DomainDoc` — resolves to doc internally
+  - `DomainDoc` extends `Record<string, any>` so it allows arbitrary additional fields beyond the declared ones
+---
