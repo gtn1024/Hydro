@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "sessionId": "a36f9e10-cb30-4955-81c4-75a16c7e3521",
+  "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
-  "startedAt": "2026-04-03T03:32:29.727Z",
-  "updatedAt": "2026-04-03T04:25:33.135Z",
-  "currentIteration": 15,
+  "startedAt": "2026-04-03T04:30:32.116Z",
+  "updatedAt": "2026-04-03T04:33:49.309Z",
+  "currentIteration": 0,
   "maxIterations": 0,
-  "tasksCompleted": 14,
+  "tasksCompleted": 0,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -18,90 +18,90 @@
         "id": "US-001",
         "title": "@hydrooj/framework 重新导出",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-002",
         "title": "@hydrooj/framework 装饰器 & 验证器",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-003",
         "title": "Context & Service",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-004",
         "title": "SystemModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-005",
         "title": "UserModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-006",
         "title": "ProblemModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-007",
         "title": "RecordModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-008",
         "title": "DomainModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-009",
         "title": "TokenModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-010",
         "title": "ScheduleModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-011",
         "title": "SolutionModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-012",
         "title": "MessageModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-013",
         "title": "OauthModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-014",
         "title": "BlackListModel",
         "status": "completed",
-        "completedInSession": true
+        "completedInSession": false
       },
       {
         "id": "US-015",
         "title": "StorageModel",
-        "status": "open",
+        "status": "completed",
         "completedInSession": false
       },
       {
@@ -304,158 +304,7 @@
       }
     ]
   },
-  "iterations": [
-    {
-      "iteration": 1,
-      "status": "completed",
-      "taskId": "US-001",
-      "taskTitle": "@hydrooj/framework 重新导出",
-      "taskCompleted": true,
-      "durationMs": 252851,
-      "startedAt": "2026-04-03T03:32:41.461Z",
-      "endedAt": "2026-04-03T03:36:54.312Z"
-    },
-    {
-      "iteration": 2,
-      "status": "completed",
-      "taskId": "US-002",
-      "taskTitle": "@hydrooj/framework 装饰器 & 验证器",
-      "taskCompleted": true,
-      "durationMs": 298074,
-      "startedAt": "2026-04-03T03:36:55.458Z",
-      "endedAt": "2026-04-03T03:41:53.532Z"
-    },
-    {
-      "iteration": 3,
-      "status": "completed",
-      "taskId": "US-003",
-      "taskTitle": "Context & Service",
-      "taskCompleted": true,
-      "durationMs": 264451,
-      "startedAt": "2026-04-03T03:41:54.664Z",
-      "endedAt": "2026-04-03T03:46:19.115Z"
-    },
-    {
-      "iteration": 4,
-      "status": "completed",
-      "taskId": "US-004",
-      "taskTitle": "SystemModel",
-      "taskCompleted": true,
-      "durationMs": 233191,
-      "startedAt": "2026-04-03T03:46:20.226Z",
-      "endedAt": "2026-04-03T03:50:13.417Z"
-    },
-    {
-      "iteration": 5,
-      "status": "completed",
-      "taskId": "US-005",
-      "taskTitle": "UserModel",
-      "taskCompleted": true,
-      "durationMs": 246456,
-      "startedAt": "2026-04-03T03:50:14.517Z",
-      "endedAt": "2026-04-03T03:54:20.973Z"
-    },
-    {
-      "iteration": 6,
-      "status": "completed",
-      "taskId": "US-006",
-      "taskTitle": "ProblemModel",
-      "taskCompleted": true,
-      "durationMs": 294223,
-      "startedAt": "2026-04-03T03:54:22.067Z",
-      "endedAt": "2026-04-03T03:59:16.290Z"
-    },
-    {
-      "iteration": 7,
-      "status": "completed",
-      "taskId": "US-007",
-      "taskTitle": "RecordModel",
-      "taskCompleted": true,
-      "durationMs": 231196,
-      "startedAt": "2026-04-03T03:59:17.385Z",
-      "endedAt": "2026-04-03T04:03:08.581Z"
-    },
-    {
-      "iteration": 8,
-      "status": "completed",
-      "taskId": "US-008",
-      "taskTitle": "DomainModel",
-      "taskCompleted": true,
-      "durationMs": 202706,
-      "startedAt": "2026-04-03T04:03:09.682Z",
-      "endedAt": "2026-04-03T04:06:32.388Z"
-    },
-    {
-      "iteration": 9,
-      "status": "completed",
-      "taskId": "US-009",
-      "taskTitle": "TokenModel",
-      "taskCompleted": true,
-      "durationMs": 143569,
-      "startedAt": "2026-04-03T04:06:33.485Z",
-      "endedAt": "2026-04-03T04:08:57.054Z"
-    },
-    {
-      "iteration": 10,
-      "status": "completed",
-      "taskId": "US-010",
-      "taskTitle": "ScheduleModel",
-      "taskCompleted": true,
-      "durationMs": 88085,
-      "startedAt": "2026-04-03T04:08:58.163Z",
-      "endedAt": "2026-04-03T04:10:26.248Z"
-    },
-    {
-      "iteration": 11,
-      "status": "completed",
-      "taskId": "US-011",
-      "taskTitle": "SolutionModel",
-      "taskCompleted": true,
-      "durationMs": 132665,
-      "startedAt": "2026-04-03T04:10:27.348Z",
-      "endedAt": "2026-04-03T04:12:40.013Z"
-    },
-    {
-      "iteration": 12,
-      "status": "completed",
-      "taskId": "US-012",
-      "taskTitle": "MessageModel",
-      "taskCompleted": true,
-      "durationMs": 101528,
-      "startedAt": "2026-04-03T04:12:41.110Z",
-      "endedAt": "2026-04-03T04:14:22.638Z"
-    },
-    {
-      "iteration": 13,
-      "status": "completed",
-      "taskId": "US-013",
-      "taskTitle": "OauthModel",
-      "taskCompleted": true,
-      "durationMs": 375861,
-      "startedAt": "2026-04-03T04:14:23.740Z",
-      "endedAt": "2026-04-03T04:20:39.601Z"
-    },
-    {
-      "iteration": 14,
-      "status": "completed",
-      "taskId": "US-014",
-      "taskTitle": "BlackListModel",
-      "taskCompleted": true,
-      "durationMs": 112989,
-      "startedAt": "2026-04-03T04:20:40.697Z",
-      "endedAt": "2026-04-03T04:22:33.686Z"
-    },
-    {
-      "iteration": 15,
-      "status": "completed",
-      "taskId": "US-015",
-      "taskTitle": "StorageModel",
-      "taskCompleted": false,
-      "durationMs": 142724,
-      "startedAt": "2026-04-03T04:22:34.783Z",
-      "endedAt": "2026-04-03T04:24:57.507Z"
-    }
-  ],
+  "iterations": [],
   "skippedTaskIds": [],
   "cwd": "/Users/getn/repos/github/HydroApis",
   "activeTaskIds": [],
