@@ -13,6 +13,15 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-028
+- Documented pipelineUtils: 7 batch iteration functions + 1 type interface
+- Files changed: `docs/utils/pipeline-utils.md` (created)
+- **Learnings:**
+  - pipelineUtils functions fall into two groups: direct iterators (`iterateAllDomain`, `iterateAllUser`, `iterateAllRecord`) and composite iterators (`iterateAllContest`, `iterateAllPsdoc`, `iterateAllProblem`, `iterateAllProblemInDomain`) that nest `iterateAllDomain` as the outer loop
+  - `iterateAllProblemInDomain` is the only function with a mutation side-effect — returning a truthy value from the callback triggers automatic `problem.edit()`, making it useful for migration scripts
+  - Most functions load the full result set into memory before iterating; only `iterateAllPsdoc` and `iterateAllRecord` use cursor-based iteration
+---
+
 ## 2026-04-03 - US-027
 - Documented Handler, ConnectionHandler, requireSudo: 2 handler classes + 1 decorator
 - Files changed: `docs/service/handler.md` (created)
