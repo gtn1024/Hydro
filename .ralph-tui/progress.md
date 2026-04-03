@@ -7,6 +7,23 @@ after each iteration and it's included in prompts for context.
 
 *Add reusable patterns discovered during development here.*
 
+- DocumentModel is the foundational data-access layer that higher-level models (Problem, Contest, Training, Discussion) delegate to — each specifies a `docType` constant and calls DocumentModel functions
+- DocumentModel has two collections: `coll` (document) for records and `collStatus` (document.status) for per-user state, both sharing the same `(domainId, docType, docId)` composite key
+- Revision-based status methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control on status records
+
+---
+
+## 2026-04-03 - US-022
+- Documented DocumentModel: 28 functions across 6 categories — DocType Constants (10), Collections (2), Document CRUD (9), Sub-document Operations (6), Status CRUD (11), Revision-based Status (3), plus Lifecycle (1) and 2 type interfaces
+- Files changed: `docs/models/document-model.md` (created)
+- **Learnings:**
+  - DocumentModel is the foundational data-access layer — higher-level models delegate to it with specific `docType` constants
+  - Two separate collections: `coll` for documents, `collStatus` for per-user status, sharing `(domainId, docType, docId)` composite key
+  - Revision-based methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control
+  - `setStatusIfCondition` catches exceptions and returns `false` — unusual error handling pattern compared to other methods
+  - `cappedIncStatus` silently skips increments that would exceed caps (uses `$not` filter instead of post-check)
+  - `add()` fires `document/add` bus event; `set()` fires `document/set` bus event — only these two methods have event hooks
+
 ---
 
 ## 2026-04-03 - US-021
