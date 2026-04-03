@@ -9,6 +9,18 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-021
+- Documented DiscussionModel: 33 exported members across 9 categories — Constants & Types (6), Discussion CRUD (7), Reply CRUD (6), Tail Reply CRUD (4), Reactions (2), History (1), User Status (3), Nodes (4), Virtual Nodes (3), Lifecycle (1)
+- Files changed: `docs/models/discussion-model.md` (created)
+- **Learnings:**
+  - DiscussionModel has a 3-level nesting hierarchy: Discussion -> Reply -> Tail Reply, each with full CRUD
+  - Tail replies are stored as sub-documents (`reply` array field) on the parent reply, accessed via `document.push/getSub/setSub/deleteSub`
+  - All content edits (discussions, replies, tail replies) automatically insert history records into `discussion.history` collection
+  - `add()` fires bus events (`discussion/before-add`, `discussion/add`) — the only model method with before/after event hooks observed so far
+  - `apply()` handles cross-entity cascading (problem deletion triggers discussion cleanup, problem edit syncs `hidden` status)
+
+---
+
 ## 2026-04-03 - US-020
 - Documented SettingModel: 1 factory function (`Setting`), 5 registration functions (`PreferenceSetting`, `AccountSetting`, `DomainSetting`, `DomainUserSetting`, `SystemSetting`), 6 flag constants, 10 collection constants, `langs`, and `SettingType`
 - Files changed: `docs/models/setting-model.md` (created)
