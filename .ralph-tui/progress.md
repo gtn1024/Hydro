@@ -9,6 +9,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-019
+- Documented OplogModel: 4 exported members (`coll`, `add`, `get`, `log`)
+- Files changed: `docs/models/oplog-model.md` (created)
+- **Learnings:**
+  - OplogModel is a plain module with exported functions, not a class — same pattern as OpcountModel and TrainingModel
+  - `log()` is the primary entry point for request-context logging; `add()` is a lower-level variant for system/background use
+  - `safeKeys()` is an internal helper (not exported) that strips sensitive fields like `password` and sanitizes MongoDB-unsafe key characters (`$`, `.`)
+  - The model registers itself on `global.Hydro.model.oplog` at module load time
+
+---
+
 ## 2026-04-03 - US-018
 - Documented OpcountModel: 2 exported functions (`inc`, `apply`)
 - Files changed: `docs/models/opcount-model.md` (created)
