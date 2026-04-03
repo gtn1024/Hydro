@@ -14,6 +14,15 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-032
+- Documented utility libraries: 3 re-exported third-party modules (nanoid, moment, isMoment) + 9 Hydro utilities (buildContent, mime, difficultyAlgorithm, rating, avatar, testdataConfig/parseConfig, sendMail, pwsh, UiContextBase)
+- Files changed: `docs/utils/lib.md` (created)
+- **Learnings:**
+  - `testdataConfig` is an export alias — the internal function is `parseConfig` but `plugin-api.ts` re-exports it as `testdataConfig` via `export { parseConfig as testdataConfig }`
+  - `pwsh` (hydro hash) is imported as default from `./lib/hash.hydro` and also registered globally as `global.Hydro.module.hash.hydro` — it's one of multiple hash strategies in the system
+  - `UiContextBase` is both an interface and a constant object exported from the base middleware layer — it's the template that gets cloned and augmented per-request
+---
+
 ## 2026-04-03 - US-031
 - Documented SettingService: 5 public methods (get, setConfig, requestConfig, loadConfig, saveConfig), 5 registration methods (PreferenceSetting, AccountSetting, DomainSetting, DomainUserSetting, SystemSetting), plus properties and internal methods
 - Files changed: `docs/service/setting-service.md` (created)

@@ -575,9 +575,10 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/hydrooj/src/lib/content.ts, mime.ts, difficulty.ts, rating.ts, avatar.ts, testdataConfig.ts, mail.ts, hash.hydro.ts, service/layers/base.ts",
-      "dependsOn": []
+      "dependsOn": [],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-033",
@@ -856,6 +857,6 @@
     }
   ],
   "metadata": {
-    "updatedAt": "2026-04-03T05:11:37.312Z"
+    "updatedAt": "2026-04-03T05:15:19.358Z"
   }
 }
