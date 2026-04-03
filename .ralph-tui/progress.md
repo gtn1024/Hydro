@@ -48,3 +48,14 @@ after each iteration and it's included in prompts for context.
   - `injectUI` injects into typed slots: `Nav`, `ProblemAdd`, `ControlPanel`, `DomainManage`, `Notification`, `UserDropdown`
 ---
 
+## 2026-04-03 - US-004
+- Documented SystemModel: 3 public methods (get, getMany, set), 2 properties (coll, cache), and 20 SystemKeys entries
+- Created `docs/models/system.md` with method signatures, type reference, and initialization flow
+- **Learnings:**
+  - `SystemModel` is a `serviceInstance` proxy over `SystemModelService` — not a plain class, but all methods are accessible through it
+  - `getMany` has typed tuple overloads for up to 6 keys; beyond that it falls back to `any[]`
+  - `set` broadcasts by default (`broadcast=true`); pass `false` for local-only writes
+  - Cache is populated from two sources at init: `SYSTEM_SETTINGS` defaults, then MongoDB collection values (DB wins)
+  - `SystemKeys` interface in `packages/hydrooj/src/interface.ts` defines 20 typed keys; arbitrary string keys also work (return `any`)
+---
+
