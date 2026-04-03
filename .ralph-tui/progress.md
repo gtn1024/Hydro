@@ -13,6 +13,18 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-026
+- Documented MongoService (ctx.db): 2 properties + 6 methods + 1 static method across categories: Properties, Collection Access, Pagination, Index Management, Lifecycle
+- Documented Collections interface: 27 collection name-to-type mappings augmented via declaration merging in interface.ts
+- Documented StorageService: 2 backend classes (RemoteStorageService, LocalStorageService) sharing 8 public methods, plus Config schema and encodeRFC5987ValueChars utility
+- Files changed: `docs/services/db-and-collections.md` (created), `docs/services/storage-service.md` (created)
+- **Learnings:**
+  - MongoService is a Cordis Service registered as `ctx.db` — the `db` default export is a deprecated Proxy forwarding to `app.get('db')`
+  - Collections interface is declared empty in `service/db.ts` and fully augmented via `declare module './service/db'` in `interface.ts` — plugins can use the same pattern to add custom collection types
+  - StorageService exports a namespace with 2 backend classes selected at startup based on `Config.type` — `ctx.storage` is whichever is active, both share the same method signatures
+  - `signUpload` only works on S3 backend (throws on local); `isLinkValid` only works on local (returns false on S3)
+---
+
 ## 2026-04-03 - US-024
 - Documented ContestModel: 47 exported members across 10 categories — Constants & Types (3), State Predicates (8), CRUD (7), Status (10), Scoreboard Visibility (5), Balloon (4), Clarification (4), Print Task (4), Other (2), plus lifecycle (1)
 - Files changed: `docs/models/contest-model.md` (created)

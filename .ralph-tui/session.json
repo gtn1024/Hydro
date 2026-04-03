@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T04:53:15.031Z",
-  "currentIteration": 8,
+  "updatedAt": "2026-04-03T04:56:57.826Z",
+  "currentIteration": 10,
   "maxIterations": 0,
-  "tasksCompleted": 8,
+  "tasksCompleted": 9,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -155,8 +155,8 @@
       {
         "id": "US-024",
         "title": "ContestModel",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-025",
@@ -384,10 +384,32 @@
       "durationMs": 268426,
       "startedAt": "2026-04-03T04:44:44.144Z",
       "endedAt": "2026-04-03T04:49:12.570Z"
+    },
+    {
+      "iteration": 9,
+      "status": "completed",
+      "taskId": "US-024",
+      "taskTitle": "ContestModel",
+      "taskCompleted": true,
+      "durationMs": 241348,
+      "startedAt": "2026-04-03T04:49:13.681Z",
+      "endedAt": "2026-04-03T04:53:15.029Z"
+    },
+    {
+      "iteration": 10,
+      "status": "failed",
+      "taskId": "US-025",
+      "taskTitle": "EventMap (事件总线)",
+      "taskCompleted": false,
+      "durationMs": 3946,
+      "startedAt": "2026-04-03T04:53:16.129Z",
+      "endedAt": "2026-04-03T04:53:20.075Z"
     }
   ],
   "skippedTaskIds": [],
   "cwd": "/Users/getn/repos/github/HydroApis",
-  "activeTaskIds": [],
+  "activeTaskIds": [
+    "US-025"
+  ],
   "subagentPanelVisible": false
 }
