@@ -14,7 +14,18 @@ after each iteration and it's included in prompts for context.
 - DocumentModel has two collections: `coll` (document) for records and `collStatus` (document.status) for per-user state, both sharing the same `(domainId, docType, docId)` composite key
 - Revision-based status methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control on status records
 - SettingService registration methods (`PreferenceSetting`, `AccountSetting`, etc.) wrap SettingModel functions via a higher-order `T()` helper that auto-disposes on context teardown — plugins use `ctx.setting.X()` instead of the bare `SettingModel.X()`
+- `Sock` wraps `ReconnectingWebSocket` with built-in heartbeat (30s ping interval), Shorty compression support (activated by server sending `"shorty"` message), and auto-close on permission errors — the `on()` method is a thin setter that maps event names to `on{event}` properties
 
+---
+
+## 2026-04-03 - US-038
+- Documented Socket (Sock class): constructor with url/nocookie/shorty params, 3 properties, 3 event callbacks, 3 methods, internal message handling protocol
+- Files changed: `docs/ui/socket.md` (created)
+- **Learnings:**
+  - `Sock` wraps `ReconnectingWebSocket` with built-in heartbeat (30s ping interval), Shorty compression support, and auto-close on permission errors
+  - `on()` is a thin setter mapping event names to `on{event}` properties — not an EventEmitter pattern
+  - Close codes >= 4000 trigger automatic `close()` (non-reconnectable), while normal close allows reconnect
+  - Shorty compression is activated by server sending `"shorty"` message; subsequent messages are inflated before JSON parsing
 ---
 
 ## 2026-04-03 - US-037

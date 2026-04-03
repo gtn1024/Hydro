@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:26:56.305Z",
-  "currentIteration": 21,
+  "updatedAt": "2026-04-03T05:28:45.502Z",
+  "currentIteration": 22,
   "maxIterations": 0,
-  "tasksCompleted": 20,
+  "tasksCompleted": 21,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -233,8 +233,8 @@
       {
         "id": "US-037",
         "title": "Notification & Rotator & selectUser",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-038",
@@ -514,6 +514,16 @@
       "durationMs": 119418,
       "startedAt": "2026-04-03T05:22:46.358Z",
       "endedAt": "2026-04-03T05:24:45.776Z"
+    },
+    {
+      "iteration": 22,
+      "status": "completed",
+      "taskId": "US-037",
+      "taskTitle": "Notification & Rotator & selectUser",
+      "taskCompleted": true,
+      "durationMs": 129432,
+      "startedAt": "2026-04-03T05:24:46.873Z",
+      "endedAt": "2026-04-03T05:26:56.305Z"
     }
   ],
   "skippedTaskIds": [],
