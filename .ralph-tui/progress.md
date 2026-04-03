@@ -88,3 +88,17 @@ after each iteration and it's included in prompts for context.
   - Config auto-parses on `get()` unless `rawConfig=true`; `getList()` also resolves references and parses configs
 ---
 
+## 2026-04-03 - US-007
+- Documented RecordModel: 12 public static methods across 4 categories (lookup, statistics, submission & judging, update) + properties, types, and bus events
+- Documented 4 type exports: `RecordDoc`, `RecordStatDoc`, `RecordHistoryDoc`, `JudgeMeta`
+- Created `docs/models/record-model.md`
+- **Learnings:**
+  - `RecordModel` is a static-only class like `UserModel` and `ProblemModel` — all methods are `static`
+  - Uses 3 MongoDB collections: `record` (main), `record.stat` (accepted stats), `record.history` (archived results for rejudge)
+  - `RECORD_PRETEST` and `RECORD_GENERATE` are sentinel ObjectIds (`000...000`, `000...001`) used as contest IDs to mark special record types
+  - `RecordDoc` is a mapped type over `RecordPayload` from `@hydrooj/common`, converting `hackTarget`/`contest` fields from `string` to `ObjectId`
+  - `reset()` archives judge results to `record.history` before clearing — enables viewing previous judge results
+  - `stat()` is decorated with `@ArgMethod` — this marks it as callable via argument/CLI patterns
+  - `judge()` follows problem references — if the problem has `reference`, it resolves to the source problem for judging
+  - `submissionPriority()` throttles high-frequency submitters by penalizing recent submissions and pending tasks
+---

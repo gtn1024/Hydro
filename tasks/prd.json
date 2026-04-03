@@ -120,11 +120,12 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 2,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/hydrooj/src/model/record.ts",
       "dependsOn": [
         "US-003"
-      ]
+      ],
+      "completionNotes": "Completed by agent"
     },
     {
       "id": "US-008",
@@ -832,6 +833,6 @@
     }
   ],
   "metadata": {
-    "updatedAt": "2026-04-03T03:59:16.291Z"
+    "updatedAt": "2026-04-03T04:03:08.581Z"
   }
 }
