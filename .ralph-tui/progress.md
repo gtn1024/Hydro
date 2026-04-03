@@ -9,6 +9,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-020
+- Documented SettingModel: 1 factory function (`Setting`), 5 registration functions (`PreferenceSetting`, `AccountSetting`, `DomainSetting`, `DomainUserSetting`, `SystemSetting`), 6 flag constants, 10 collection constants, `langs`, and `SettingType`
+- Files changed: `docs/models/setting-model.md` (created)
+- **Learnings:**
+  - SettingModel is a registration-based module, not a data-access model — plugins call registration functions to declare settings, not to read/write values
+  - All registration functions return a dispose callback (`() => void`) for clean plugin teardown
+  - Registration functions accept both raw `_Setting[]` objects and schemastery `Schema` objects (auto-converted via internal `schemaToSettings()`)
+  - `SETTINGS` and `SETTINGS_BY_KEY` are shared across preference + account settings only; domain/system/user-domain have their own separate `*_BY_KEY` maps
+
+---
+
 ## 2026-04-03 - US-019
 - Documented OplogModel: 4 exported members (`coll`, `add`, `get`, `log`)
 - Files changed: `docs/models/oplog-model.md` (created)
