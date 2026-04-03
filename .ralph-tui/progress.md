@@ -72,3 +72,19 @@ after each iteration and it's included in prompts for context.
   - `create` auto-allocates UIDs by finding max `_id + 1` and retries on duplicate key collision
 ---
 
+## 2026-04-03 - US-006
+- Documented ProblemModel: 29 static methods across 7 categories (CRUD, batch lookup, status tracking, testdata, additional files, sub-doc helpers, import/export) + permission check
+- Documented 4 type exports: `ProblemDoc`, `Field`, `ProblemDict`, `ProblemStatusDoc`
+- Documented 4 projection constants, 2 default sentinels, and 12 bus events
+- Created `docs/models/problem-model.md`
+- **Learnings:**
+  - `ProblemModel` is a static-only class like `UserModel` — all methods are `static`
+  - `ProblemDoc` is declared via module augmentation in `interface.ts` (not in `problem.ts` itself); the file just has `export interface ProblemDoc extends Document {}` as a base
+  - `Field` is simply `keyof ProblemDoc` — a derived type, not a standalone schema
+  - `ProblemDict` is `NumericDictionary<ProblemDoc>` — keys can be both `docId` (number) and `pid` (string)
+  - Testdata and additional files are stored in gridfs (`storage.*`) with metadata tracked in the `data` / `additional_file` arrays on the problem document
+  - `push`/`pull`/`inc` are generic helpers delegated to the `document` subsystem; they use `ArrayKeys<ProblemDoc>` and `NumberKeys<ProblemDoc>` type constraints
+  - `import` supports 3 formats: Hydro native, ICPC problem package, and DOMjudge (`domjudge-problem.ini`)
+  - Config auto-parses on `get()` unless `rawConfig=true`; `getList()` also resolves references and parses configs
+---
+
