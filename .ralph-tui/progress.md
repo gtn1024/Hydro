@@ -10,6 +10,19 @@ after each iteration and it's included in prompts for context.
 - DocumentModel is the foundational data-access layer that higher-level models (Problem, Contest, Training, Discussion) delegate to — each specifies a `docType` constant and calls DocumentModel functions
 - DocumentModel has two collections: `coll` (document) for records and `collStatus` (document.status) for per-user state, both sharing the same `(domainId, docType, docId)` composite key
 - Revision-based status methods (`revPushStatus`, `revSetStatus`, `revInitStatus`) use a `rev` counter for optimistic concurrency control on status records
+- SettingService registration methods (`PreferenceSetting`, `AccountSetting`, etc.) wrap SettingModel functions via a higher-order `T()` helper that auto-disposes on context teardown — plugins use `ctx.setting.X()` instead of the bare `SettingModel.X()`
+
+---
+
+## 2026-04-03 - US-031
+- Documented SettingService: 5 public methods (get, setConfig, requestConfig, loadConfig, saveConfig), 5 registration methods (PreferenceSetting, AccountSetting, DomainSetting, DomainUserSetting, SystemSetting), plus properties and internal methods
+- Files changed: `docs/service/setting-service.md` (created)
+- **Learnings:**
+  - SettingService registration methods are created via a higher-order `T()` helper that wraps SettingModel functions — the wrapper auto-disposes via `ctx.effect()` when the plugin context ends
+  - `requestConfig` returns a reactive Proxy when `dynamic=true` — property writes on the proxy automatically call `setConfig`, enabling transparent config persistence
+  - Config is stored as YAML in the `system` MongoDB collection under `_id: 'config'` — `loadConfig` parses it, `saveConfig` serializes via `yaml.dump`
+  - `get()` has a 3-tier resolution: domain config → system config → `global.Hydro.model.system.get` fallback
+  - Blacklist check (`__proto__`, `prototype`, `constructor`) is enforced on all path-based access methods to prevent prototype pollution
 
 ---
 

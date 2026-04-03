@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:09:07.974Z",
-  "currentIteration": 14,
+  "updatedAt": "2026-04-03T05:11:37.312Z",
+  "currentIteration": 15,
   "maxIterations": 0,
-  "tasksCompleted": 13,
+  "tasksCompleted": 14,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -191,8 +191,8 @@
       {
         "id": "US-030",
         "title": "错误类",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-031",
@@ -444,6 +444,16 @@
       "durationMs": 144189,
       "startedAt": "2026-04-03T05:01:14.813Z",
       "endedAt": "2026-04-03T05:03:39.002Z"
+    },
+    {
+      "iteration": 15,
+      "status": "completed",
+      "taskId": "US-030",
+      "taskTitle": "错误类",
+      "taskCompleted": true,
+      "durationMs": 327878,
+      "startedAt": "2026-04-03T05:03:40.095Z",
+      "endedAt": "2026-04-03T05:09:07.973Z"
     }
   ],
   "skippedTaskIds": [],
