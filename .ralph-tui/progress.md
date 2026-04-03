@@ -127,3 +127,14 @@ after each iteration and it's included in prompts for context.
   - `createOrUpdate` uses `data` as both the search filter and the update payload — it finds by `{tokenType, ...data}` then either adds or updates
   - `delByUid` deletes ALL token types for a user (not just sessions) — used in ban/logout flows
 ---
+
+## 2026-04-03 - US-010
+- Documented ScheduleModel: 6 public static methods (add, get, count, del, deleteMany, getFirst), properties, type exports, indexes, and bus events
+- Created `docs/models/schedule-model.md`
+- **Learnings:**
+  - `ScheduleModel` is a static-only class like `UserModel`, `ProblemModel`, `RecordModel`, `DomainModel`, `TokenModel` — all methods are `static`
+  - `getFirst` is defined as a standalone function outside the class then assigned as `static getFirst = getFirst` — uses `findOneAndDelete` for atomic task consumption
+  - If a task has an `interval` field, `getFirst` automatically re-inserts it with the next execution time
+  - The `apply()` function seeds a built-in `task.daily` schedule (runs at 03:00 daily) and registers a worker handler for cleanup/stats
+  - `getFirst` returns `null` when `process.env.CI` is set — skips task execution in CI environments
+---
