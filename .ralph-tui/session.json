@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "sessionId": "72bed1a2-9dd9-4062-9596-f842b38de6d6",
+  "sessionId": "4c6349d5-5c39-4970-8649-2038d5ffca53",
   "status": "running",
-  "startedAt": "2026-04-03T06:06:44.876Z",
-  "updatedAt": "2026-04-03T06:10:52.976Z",
+  "startedAt": "2026-04-03T07:50:57.677Z",
+  "updatedAt": "2026-04-03T07:54:00.364Z",
   "currentIteration": 0,
   "maxIterations": 0,
   "tasksCompleted": 0,
@@ -161,7 +161,7 @@
       {
         "id": "US-025",
         "title": "EventMap (事件总线)",
-        "status": "open",
+        "status": "completed",
         "completedInSession": false
       },
       {

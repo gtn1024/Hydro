@@ -7,21 +7,16 @@ after each iteration and it's included in prompts for context.
 
 *Add reusable patterns discovered during development here.*
 
-* EventMap 事件使用 `before-*` / 动作 成对模式：`before-add` 可拦截/修改，`add` 为事后通知。监听 `before-*` 可影响主流程，监听动作仅做副作用。
-* `VoidReturn` = `Promise<any> | any`，即监听器可同步或异步；`void` 返回表示框架忽略返回值。
-* `ctx.broadcast()` 内部触发 `bus/broadcast` 事件，由 PM2 或 MongoDB 总线实现跨进程传播。
+* **AutoComplete 组件族模式**: 所有 AutoComplete 子类继承自 `AutoComplete` 基类（`DOMAttachedObject`），通过 `DOMAttachKey` 静态属性区分类型，构造函数中传入 `component` 和 `props` 覆盖默认渲染。
 
 ---
 
-## 2026-04-03 - US-025
-- Documented all 64 EventMap events grouped by 14 domains with parameter signatures
-- Added usage patterns for ctx.on(), ctx.emit(), ctx.parallel(), ctx.broadcast()
-- Documented internal broadcast mechanism (PM2 vs MongoDB)
-- **Files changed:** docs/event/event-bus.md (new)
+## 2026-04-03 - US-042
+- Documented all AutoComplete components (AutoComplete base class + 7 subclasses)
+- Created `docs/ui/components/autocomplete.md`
 - **Learnings:**
-  - EventMap re-exported as `Events` from context.ts via `export { EventMap as Events }`
-  - Events follow a consistent `domain/action` naming pattern
-  - `before-*` hooks allow mutation, plain hooks are post-action notifications
-
+  - The autocomplete directory has 8 classes (base + 7 subclasses), not just the 6 listed in AC. Also found `FileSelectAutoComplete` and `LanguageSelectAutoComplete`
+  - All subclasses follow the same pattern: extend `AutoComplete`, set `DOMAttachKey`, pass a specific React component via `component` option
+  - Source files exist at both top level and in `components/` subdirectory — top-level files are the DOMAttachedObject wrappers, `components/` contains the React components
 ---
 
