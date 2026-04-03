@@ -9,6 +9,16 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-018
+- Documented OpcountModel: 2 exported functions (`inc`, `apply`)
+- Files changed: `docs/models/opcount-model.md` (created)
+- **Learnings:**
+  - OpcountModel is a plain module with exported functions, not a class — same pattern as TrainingModel
+  - Rate limiting uses fixed-aligned time windows (not sliding), implemented via MongoDB TTL indexes + unique constraint on `{op, ident, expireAt}`
+  - The unique constraint doubles as the rate-limit enforcement: when the counter hits max, the upsert fails with a duplicate key error which is caught and re-thrown as `OpcountExceededError`
+
+---
+
 ## 2026-04-03 - US-017
 - Documented TrainingModel: 17 exported functions across CRUD (7), Enrollment & Status (5), DAG Helpers (5)
 - Files changed: `docs/models/training-model.md` (created)
