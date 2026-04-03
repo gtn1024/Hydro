@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:33:05.110Z",
-  "currentIteration": 24,
+  "updatedAt": "2026-04-03T05:35:15.518Z",
+  "currentIteration": 25,
   "maxIterations": 0,
-  "tasksCompleted": 23,
+  "tasksCompleted": 24,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -251,8 +251,8 @@
       {
         "id": "US-040",
         "title": "download / ZipDownloader",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-041",
@@ -544,6 +544,16 @@
       "durationMs": 116793,
       "startedAt": "2026-04-03T05:28:46.593Z",
       "endedAt": "2026-04-03T05:30:43.386Z"
+    },
+    {
+      "iteration": 25,
+      "status": "completed",
+      "taskId": "US-040",
+      "taskTitle": "download / ZipDownloader",
+      "taskCompleted": true,
+      "durationMs": 140624,
+      "startedAt": "2026-04-03T05:30:44.485Z",
+      "endedAt": "2026-04-03T05:33:05.109Z"
     }
   ],
   "skippedTaskIds": [],

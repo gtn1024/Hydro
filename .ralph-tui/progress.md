@@ -19,6 +19,16 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-041
+- Documented loadMonaco: 1 main async function (load), 1 deprecated function (legacyLoadExternalModule), return type with 4 properties, 5 built-in feature loaders
+- Files changed: `docs/ui/components/monaco.md` (created)
+- **Learnings:**
+  - `load()` serializes concurrent calls via an internal promise chain — `loadPromise` ensures only one initialization runs at a time
+  - Feature loading is idempotent — a module-level `loaded` array tracks which features have been loaded, skipping duplicates
+  - Plugin-contributed features are resolved via `getFeatures('monaco-{feat}')` — items can be functions, URL strings, or module paths
+  - The return value combines exports from both `loader.ts` and `./index.ts` — `monaco`, `registerAction`, `customOptions`, and `renderMarkdown` come from the index module
+---
+
 ## 2026-04-03 - US-040
 - Documented download (default export) and downloadProblemSet: 2 async functions + EventMap extension
 - Files changed: `docs/ui/components/zip-downloader.md` (created)
