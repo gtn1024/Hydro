@@ -138,3 +138,14 @@ after each iteration and it's included in prompts for context.
   - The `apply()` function seeds a built-in `task.daily` schedule (runs at 03:00 daily) and registers a worker handler for cleanup/stats
   - `getFirst` returns `null` when `process.env.CI` is set — skips task execution in CI environments
 ---
+
+## 2026-04-03 - US-011
+- Documented SolutionModel: 14 public static methods across 4 categories (CRUD, listing, replies, voting) and 1 bus event
+- Created `docs/models/solution-model.md`
+- **Learnings:**
+  - `SolutionModel` is a static-only class like all other models — all methods are `static`
+  - Entirely delegates to the generic `document` subsystem using `TYPE_PROBLEM_SOLUTION` / `TYPE_PROBLEM` — no direct MongoDB collection access
+  - `vote` uses a two-step pattern: `setStatus` with `'before'` strategy to detect prior votes, then `inc` to adjust the delta — prevents double-counting
+  - `del` performs parallel deletion of both the document and its status records
+  - No exported types from `solution.ts` — uses generic `Document` from the document subsystem
+---
