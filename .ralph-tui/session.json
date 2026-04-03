@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:54:06.909Z",
-  "currentIteration": 31,
+  "updatedAt": "2026-04-03T05:58:42.810Z",
+  "currentIteration": 33,
   "maxIterations": 0,
-  "tasksCompleted": 29,
+  "tasksCompleted": 30,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -293,8 +293,8 @@
       {
         "id": "US-047",
         "title": "第三方库导出",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-048",
@@ -614,6 +614,26 @@
       "durationMs": 117279,
       "startedAt": "2026-04-03T05:48:52.843Z",
       "endedAt": "2026-04-03T05:50:50.122Z"
+    },
+    {
+      "iteration": 32,
+      "status": "completed",
+      "taskId": "US-047",
+      "taskTitle": "第三方库导出",
+      "taskCompleted": true,
+      "durationMs": 195682,
+      "startedAt": "2026-04-03T05:50:51.226Z",
+      "endedAt": "2026-04-03T05:54:06.908Z"
+    },
+    {
+      "iteration": 33,
+      "status": "completed",
+      "taskId": "US-048",
+      "taskTitle": "@hydrooj/utils/lib/common 重新导出",
+      "taskCompleted": false,
+      "durationMs": 220356,
+      "startedAt": "2026-04-03T05:54:08.009Z",
+      "endedAt": "2026-04-03T05:57:48.365Z"
     }
   ],
   "skippedTaskIds": [],

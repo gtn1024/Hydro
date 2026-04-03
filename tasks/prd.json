@@ -865,12 +865,13 @@
         "人工 review：API 名称、分类、描述与源码一致"
       ],
       "priority": 3,
-      "passes": false,
+      "passes": true,
       "notes": "Source: packages/ui-default/index.ts:16, @hydrooj/utils/lib/common",
-      "dependsOn": []
+      "dependsOn": [],
+      "completionNotes": "Completed by agent"
     }
   ],
   "metadata": {
-    "updatedAt": "2026-04-03T05:54:06.909Z"
+    "updatedAt": "2026-04-03T05:58:42.809Z"
   }
 }

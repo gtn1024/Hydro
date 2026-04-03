@@ -16,6 +16,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-048
+- Documented @hydrooj/utils/lib/common: 15 exported functions, 1 type, 7 global prototype extensions
+- Files changed: `docs/ui/utils/common.md` (created)
+- **Learnings:**
+  - `@hydrooj/utils` lives at `framework/utils/` (not `packages/utils/`) — the package path doesn't follow the monorepo convention
+  - `common.ts` has global side effects: importing it mutates `String.prototype`, `Math`, and `Set` with utility methods — not a pure module
+  - `camelCase`, `paramCase`, `snakeCase` use a shared `deepen()` higher-order function that recurses into objects/arrays — a single converter handles both string and deep-object cases
+  - `getAlphabeticId` pre-caches the first 52 entries (A-Z, AA-AZ) for performance; indices beyond that use recursive string construction
+
+---
+
 ## 2026-04-03 - US-047
 - Documented 7 third-party library re-exports: $ (jQuery), _ (Lodash), React, ReactDOM, jsxRuntime, redux (react-redux), AnsiUp
 - Files changed: `docs/ui/third-party.md` (created)
