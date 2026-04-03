@@ -19,6 +19,17 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-040
+- Documented download (default export) and downloadProblemSet: 2 async functions + EventMap extension
+- Files changed: `docs/ui/components/zip-downloader.md` (created)
+- **Learnings:**
+  - `download` uses `streamsaver` to stream ZIP directly to disk — no full-archive-in-memory, uses `createZipStream` with a pull-based controller
+  - Files are fetched with `PQueue({ concurrency: 5 })` and up to 5 retries per file with 3-second delays
+  - `downloadProblemSet` fires `ctx.serial('problemset/download', ...)` lifecycle hook so plugins can inject extra files into the export ZIP
+  - Problem content is parsed as JSON; if it's an object, each key becomes a separate `.md` file, otherwise written as single `problem.md`
+  - `WritableStream` polyfill is loaded on demand — `waitForWritableStream` checks native support first
+---
+
 ## 2026-04-03 - US-039
 - Documented uploadFiles: 1 async function + UploadOptions interface (5 optional fields)
 - Files changed: `docs/ui/upload-files.md` (created)
