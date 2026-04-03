@@ -3,10 +3,10 @@
   "sessionId": "e4f3a3e3-8e33-44b8-b241-45f7a1c6b64f",
   "status": "running",
   "startedAt": "2026-04-03T04:30:32.116Z",
-  "updatedAt": "2026-04-03T05:24:45.777Z",
-  "currentIteration": 20,
+  "updatedAt": "2026-04-03T05:26:56.305Z",
+  "currentIteration": 21,
   "maxIterations": 0,
-  "tasksCompleted": 19,
+  "tasksCompleted": 20,
   "isPaused": false,
   "agentPlugin": "claude",
   "trackerState": {
@@ -227,8 +227,8 @@
       {
         "id": "US-036",
         "title": "Dialog 系统",
-        "status": "open",
-        "completedInSession": false
+        "status": "completed",
+        "completedInSession": true
       },
       {
         "id": "US-037",
@@ -504,6 +504,16 @@
       "durationMs": 127847,
       "startedAt": "2026-04-03T05:20:37.407Z",
       "endedAt": "2026-04-03T05:22:45.254Z"
+    },
+    {
+      "iteration": 21,
+      "status": "completed",
+      "taskId": "US-036",
+      "taskTitle": "Dialog 系统",
+      "taskCompleted": true,
+      "durationMs": 119418,
+      "startedAt": "2026-04-03T05:22:46.358Z",
+      "endedAt": "2026-04-03T05:24:45.776Z"
     }
   ],
   "skippedTaskIds": [],

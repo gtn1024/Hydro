@@ -17,6 +17,16 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-037
+- Documented Notification (4 static toast methods + instance API with constructor options), Rotator (DOMAttachedObject subclass with setValue/getValue animation), selectUser (async prompt wrapper returning username)
+- Files changed: `docs/ui/notification-rotator-selectuser.md` (created)
+- **Learnings:**
+  - Notification has dual modes: static methods delegate to `@mantine/notifications` (modern toast system), while the constructor creates legacy jQuery-based notifications with click actions
+  - Rotator extends `DOMAttachedObject` — a base class pattern for components that attach to DOM elements via a key (`vjRotatorInstance`); animation direction is determined by numeric comparison of old vs new value
+  - `selectUser` is a single async function that wraps `prompt()` with a user autocomplete field — minimal API surface (just `() => Promise<string | undefined>`)
+  - Rotator animation uses CSS class transitions (`pos--above`, `pos--below`, `pos--original`) with a 4000ms delay constant
+---
+
 ## 2026-04-03 - US-036
 - Documented Dialog system: 4 classes (Dialog, InfoDialog, ActionDialog, ConfirmDialog), 3 functions (prompt, confirm, alert), 2 interfaces (Field, DialogOptions)
 - Files changed: `docs/ui/dialog.md` (created)
