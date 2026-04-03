@@ -15,6 +15,16 @@ after each iteration and it's included in prompts for context.
 
 ---
 
+## 2026-04-03 - US-035
+- Documented `initPageLoader` function: async page loader initialization with lifecycle callback execution, error handling, performance logging, and post-loading animations
+- Documented internal helpers: `buildSequence()` and `PageLoader` class
+- Files changed: `docs/ui/page-loader.md` (created)
+- **Learnings:**
+  - `initPageLoader` is the only exported function from `hydro.ts` — everything else (`buildSequence`, `rounded`, `animate`) is internal
+  - `PageLoader` is in a `.js` file (not `.ts`) — uses `require.context` to auto-discover page files from `pages/` and `components/` directories
+  - Error handling is per-callback with `Notification.warn()` and `captureException`, execution continues after failures
+---
+
 ## 2026-04-03 - US-034
 - Documented frontend page registration system: Page, NamedPage, AutoloadPage classes, addPage() function, beforeLoading/afterLoading lifecycle, PageLoader internals
 - Files changed: `docs/ui/page.md` (created)
