@@ -18,9 +18,18 @@ export const link = isSupported ? (text: string, url: string) => [
 const freemem = os.freemem();
 const smallMemory = (freemem < 1024 * 1024 * 1024);
 
-const nixInstall = (...packages: string[]) => (smallMemory
-    ? packages.map((t) => `nix-env -iA ${t.includes('.') ? t : `nixpkgs.${t}`}`).join(' && ')
-    : `nix-env -iA ${packages.map((t) => (t.includes('.') ? t : `nixpkgs.${t}`)).join(' ')}`);
+const useNixProfile = process.argv.includes('--use-nix-profile');
+
+const nixInstall = (...packages: string[]) => {
+    if (useNixProfile) {
+        return packages.map((t) => (t.startsWith('hydro.')
+            ? `nix profile install github:hydro-dev/nix-channel/master#${t.split('.')[1]} --override-input nixpkgs github:NixOS/nixpkgs/nixos-23.11`
+            : `nix profile install nixpkgs#${t}`)).join(' && ');
+    }
+    return smallMemory
+        ? packages.map((t) => `nix-env -iA ${t.includes('.') ? t : `nixpkgs.${t}`}`).join(' && ')
+        : `nix-env -iA ${packages.map((t) => (t.includes('.') ? t : `nixpkgs.${t}`)).join(' ')}`;
+};
 
 const warnings: [string, ...any[]][] = [];
 
