@@ -125,6 +125,7 @@ export default (logger, xff, xhost) => async (ctx: KoaContext, next: Next) => {
         }
     } finally {
         if (!request.websocket) {
+            ctx.vary('Accept');
             if (response.etag && request.headers['if-none-match'] === response.etag) {
                 ctx.response.status = 304;
             } else if (response.redirect && !request.json) {
@@ -138,6 +139,9 @@ export default (logger, xff, xhost) => async (ctx: KoaContext, next: Next) => {
                     || (request.json
                         ? 'application/json'
                         : ctx.response.type);
+                if (ctx.response.type === 'application/json' && !ctx.response.get('Cache-Control')) {
+                    ctx.set('Cache-Control', 'no-store');
+                }
             }
         }
     }
